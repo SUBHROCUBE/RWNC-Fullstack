@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rwncApp')
-  .controller('ModulesStocksCtrl', function ($scope,httpRequest,$log) {
+  .controller('ModulesStocksCtrl', function ($scope,httpRequest,$log,stockService,$state) {
     $scope.$parent.module="stocks";
     $scope.isFilterCollapsed=true;
   	$scope.opened=false;
@@ -27,6 +27,12 @@ angular.module('rwncApp')
           $log.log(response);
         });
     }
+    
+     $scope.editStock=function(stock){
+        stockService.setSTockToEdit(stock);
+        $state.go('modules.editStock',{stockId:stock.stockId});
+     };
+    
     getStocks();
     
   });

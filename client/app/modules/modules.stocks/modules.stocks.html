@@ -3,51 +3,55 @@
   <h2 class="page-header">
         Stocks             
   </h2>
-  <div class="panel panel-default">
+  <div class="panel panel-default" ng-controller="StockFilterCtrl">
   <div class="panel-heading table-heading" >Filters      
    <span class="glyphicon glyphicon-chevron-up pull-right" aria-hidden="true" ng-click="isFilterCollapsed=false" ng-show="isFilterCollapsed"></span>
    <span class="glyphicon glyphicon-chevron-down pull-right"  aria-hidden="true" ng-click="isFilterCollapsed=true" ng-hide="isFilterCollapsed"></span>
    <span class="glyphicon glyphicon-search pull-right" aria-hidden="true"  ></span>
   </div>
   <div class="panel-body" collapse="isFilterCollapsed">
+      <form name="" ng-submit="submit()"> 
     <div class="row compact-row">    
       <div class="col-md-2">
         <div class="form-group">
           <label for="opening">Opening</label>
-          <input type="text" class="form-control" id="opening" name="opening" placeholder="">
+          <input type="text" class="form-control" ng-model="stockFilter.opening" id="opening" name="opening" placeholder="">
         </div>
       </div> 
       
       <div class="col-md-2">
        <div class="form-group">
           <label for="wiredia">Wiredia</label>
-          <input type="text" class="form-control" id="wiredia" name="wiredia" placeholder="">
+          <input type="text" class="form-control" id="wiredia" ng-model="stockFilter.diameter" name="wiredia" placeholder="">
         </div>
       </div>
 
       <div class="col-md-2">
        <div class="form-group">
           <label for="length">Length</label>
-          <input type="text" class="form-control" id="length" name="length" placeholder="">    
+          <input type="text" class="form-control" id="length" ng-model="stockFilter. length" name="length" placeholder="">    
          </div>
       </div>
 
       <div class="col-md-2">
         <div class="form-group">
           <label for="width">Width</label>
-          <input type="text" class="form-control" id="width" name="width" placeholder="">
+          <input type="text" class="form-control" id="width" name="width" placeholder="" ng-model="stockFilter.width">
         </div>
       </div>
       <div class="col-md-2">
        <div class="form-group">
           <label for="thickness">Thickness</label>
-          <input type="text" class="form-control" id="thickness" name="thickness" placeholder="">    
+          <input type="text" class="form-control" id="thickness" name="thickness" placeholder="" ng-model="stockFilter.clampThickness">    
          </div>
       </div>
       <div class="col-md-2">
         <div class="form-group">
           <label for="material">Material</label>
-          <input type="text" class="form-control" id="material" name="material" placeholder="">
+          <select ng-model="stockFilter.material" class="form-control" name="material">
+            <option value="all">All</option>
+             <option ng-repeat="material in materials" value="{{material}}">{{material}}</option>        
+          </select>
         </div>
       </div> 
     </div><!--/row-->
@@ -57,10 +61,9 @@
       <div class="col-md-2">
        <div class="form-group">
           <label for="type">Type</label>
-          <select class="form-control">
-            <option value="">All</option>
-            <option value="Green">Green</option>            
-            <option value="Red">Red</option>            
+          <select ng-model="stockFilter.type" class="form-control">
+            <option value="all">All</option>
+             <option ng-repeat="type in types" value="{{type}}">{{type}}</option>        
           </select>
         </div>
       </div>
@@ -77,7 +80,7 @@
       <div class="col-md-2">
         <div class="form-group">
           <label for="width" style="display:block">Ready / Raw</label>
-          <select class="form-control">
+          <select ng-model="stockFilter.isRawReady" class="form-control">
             <option value="">All</option>
             <option value="Green">Ready</option>            
             <option value="Red">Raw</option>            
@@ -88,7 +91,7 @@
       <div class="col-md-2">
        <div class="form-group">
           <label for="wiredia" style="display:block">Is clamped</label>
-          <select class="form-control">
+          <select ng-model="stockFilter.isClamp" class="form-control">
             <option value="">All</option>
             <option value="Green">Clamped</option>            
             <option value="Red">Not clamped</option>            
@@ -131,13 +134,13 @@
     </div><!--/row-->
     <div class="row">
       <div class="col-md-6">
-        <button class="btn btn-primary pull-right">Apply filter</button>
+        <button type="submit" class="btn btn-primary pull-right">Apply filter</button>
       </div>
       <div class="col-md-6">
-        <button class="btn">Clear filter</button>
+        <button ui-sref="stock" class="btn">Clear filter</button>
       </div>
     </div>
-  </div>
+      </form></div>
  </div>   
   <div class="row">
     <div class="col-md-12">
@@ -161,7 +164,7 @@
           <td>{{stock.type}}</td>
           <td>{{stock.length}}</td>
           <td>
-             <a class=" " ui-sref="modules.editStock">
+             <a class=" " ng-click="editStock(stock)">
               <span class="glyphicon glyphicon-pencil"></span>
             </a>             
           </td>
