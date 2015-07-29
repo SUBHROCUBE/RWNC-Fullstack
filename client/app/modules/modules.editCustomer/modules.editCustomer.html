@@ -1,0 +1,95 @@
+<div >          
+  <!--toggle sidebar button-->         
+  <h2 class="page-header">
+       Edit Customer             
+  </h2>
+  <ol class="breadcrumb">
+	  <li><a ui-sref="modules.customer">Customer</a></li>
+	  <li class="active">Edit customer</li>
+  </ol>
+  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+  <form name="editForm.form" ng-submit="submit()"> 
+  	<div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="code">Alias</label>
+          <input type="text" class="form-control" id="code" ng-model="customer.alias" validator="[required]">
+        </div>
+      </div>
+  		<div class="col-md-6">
+  			<div class="form-group">
+			    <label for="code">Name</label>
+			    <input type="text" class="form-control" id="code" ng-model="customer.name" validator="[required]">
+		  	</div>
+  		</div>
+  		
+  	</div>
+  	<div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="openingStock">SPOC name</label>
+          <input type="text" class="form-control" id="openingStock" name="openingStock" ng-model="customer.spocName" validator="[required]">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="wiredian">Contact 1</label>
+          <input type="text" class="form-control" id="wiredian" name="wiredian" ng-model="customer.contact1" validator="[required,number]">
+        </div>
+      </div>
+     	
+  	</div>	
+  	<div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="length">Contact 2</label>
+          <input type="text" class="form-control" id="length" name="length" ng-model="customer.contact2" 
+          validator="[number]">
+        </div>
+      </div>
+  		<div class="col-md-6">
+        <div class="form-group">
+          <label for="width">Email 1</label>
+          <input type="text" class="form-control" id="width" name="widht" ng-model="customer.email1" validator="[required,email]">
+        </div>
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="thickness">Email 2</label>
+          <input type="text" class="form-control" id="thickness" name="thickness" ng-model="customer.email2" ><!-- validator="[email]" -->
+        </div>
+      </div>
+  		<div class="col-md-6">
+  			<div class="form-group">
+			    <label for="material">Address</label>
+			    <textarea type="text" class="form-control" id="material" name="material" ng-model="customer.address" ></textarea>
+		  	</div>
+  		</div>  		
+  	</div>
+  	<div class="row">
+  		<div class="col-md-6">
+        <div class="form-group">
+          <label for="rawReady">VAT no.</label>
+          <input type="text" class="form-control" id="rawReady" name="rawReady" ng-model="customer.vatNo" validator="[required]">
+        </div>
+      </div>
+      <div class="col-md-6">
+  			<div class="form-group">
+			    <label for="threshold">CST no.</label>
+			    <input type="text" class="form-control" id="threshold" name="threshold" ng-model="customer.cstNo" validator="[required]">
+		  	</div>
+  		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-md-6">
+  			 <button class="btn btn-primary pull-right" type="submit">Save</button>  			 
+  		</div>
+  		<div class="col-md-6">
+  			<a class="btn btn-default pull-left" ui-sref="modules.customer">Cancle</a>
+  		</div> 
+  	</div>
+  </form>
+</div>

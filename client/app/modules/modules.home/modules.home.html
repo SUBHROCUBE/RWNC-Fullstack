@@ -1,0 +1,119 @@
+<div >          
+  <!--toggle sidebar button-->         
+  <h2 class="page-header">
+        Home             
+  </h2>
+  <div class="row placeholders">    
+  <div class="col-md-6">
+    <div class="well tHeight no-padding" >
+     <p class="section-heading">Recent orders</p>
+      <div class="list-group">
+        <table class="table table-hover table-condensed">
+          <tr>
+            <th>Customer Alias</th>
+            <th>Order Date</th>
+            <th>Delivery Date</th>
+            <th>Status</th>
+          </tr>
+          <tr ng-repeat="order in recentOrders | limitTo:4">
+            <td>{{order.customerAlias}}</td>
+            <td>{{order.orderDate | date:"dd MMM yy"}}</td>
+            <td>{{order.deliveryDate | date:"dd MMM yy"}}</td>
+            <td>{{order.orderStatus}}</td>
+          </tr>
+        </table>
+        <!-- <a ui-sref="modules.orders" class="list-group-item" ng-repeat="order in recentOrders | limitTo:4">
+          <span>{{order.customerAlias}}</span>
+          <span>{{order.orderDate | date:"dd MMM yy"}}</span>
+          <span>{{order.orderDate | date:"dd MMM yy"}}</span>          
+          <span>{{order.orderAmount}}</span>          
+        </a> -->        
+      </div>
+     </div>
+  </div> 
+  
+  <div class="col-md-6">
+    <div class="well tHeight no-padding" >
+     <p class="section-heading">Recent received</p>
+     <div class="list-group">
+      <table class="table table-hover table-condensed">
+        <tr>
+          <th>Customer Alias</th>
+          <th>Recieved Date</th>
+          <th>Type</th>
+          <th>Wt/Qt</th>
+        </tr>
+        <tr ng-repeat="received in recentReceived | limitTo:4">
+          <td>{{received.customerAlias}}</td>
+          <td>{{received.receivedDate | date: "dd MMM yy"}} </td>
+          <td>{{received.itemType}} </td>
+          <td>{{received.receivedAmount}}</td>
+        </tr>
+      </table>
+        <!-- <a ui-sref="modules.received" class="list-group-item" ng-repeat="received in recentReceived | limitTo:4">
+          <span>{{received.customerAlias}}</span>
+          <span>{{received.itemType}}</span>
+          <span>{{received.receivedAmount}}</span>          
+        </a> -->        
+      </div>
+     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="well tHeight no-padding" >
+    <p class="section-heading">Recent delivery</p>
+    <div class="list-group">
+      <table class="table table-hover table-condensed">
+        <tr>
+          <th>Customer Alias</th>
+          <th>Delivery Date</th>
+          <th>Delivered By</th>
+          <th>Bill No.</th>
+        </tr>
+        <tr ng-repeat=" delivery in recentDeliveries | limitTo:4">
+          <td>{{delivery.customerAlias}}</td>
+          <td>{{delivery.deliveryDate | date:"dd MMM yy"}} </td>
+          <td>{{delivery.deliveredBy}} </td>
+          <td>{{delivery.deliveryBillNumber}} </td>
+        </tr>
+      </table>
+        <!-- <a ui-sref="modules.received" class="list-group-item" ng-repeat=" delivery in recentDeliveries | limitTo:4">
+          <span>{{delivery.customerAlias}} </span>
+          <span>{{delivery.itemType}} </span>
+          <span>{{delivery.orderAmount}} </span>          
+        </a>  -->       
+      </div>  
+     </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="well tHeight no-padding">
+    <p class="section-heading">Stock below level</p>  
+    <div class="list-group">
+      <table class="table table-hover table-condensed">
+        <tr>
+          <th>Type</th>
+          <th>Material</th>
+          <th>Diameter</th>
+          <th>Wt/Qt</th>
+        </tr>
+        <tr ng-repeat="stock in recentLowStocks | limitTo:4">
+          <td>{{stock.itemType}}</td>
+          <td>{{stock.itemMaterial}}</td>
+          <td>{{stock.itemDiameter}}</td>
+          <td>{{stock.stockAmount}}</td>
+        </tr> 
+      </table>
+        <!-- <a ui-sref="modules.stocks" class="list-group-item" ng-repeat="stock in recentLowStocks | limitTo:4">
+          <span>{{stock.itemType}} </span>
+          <span>{{stock.itemMaterial}} </span>
+          <span>{{stock.stockAmount}} </span>          
+        </a> -->        
+      </div>
+     </div>
+  </div>
+  <hr>
+
+  </div><!--/row-->
+</div>    

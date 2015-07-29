@@ -1,0 +1,123 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(client) app/vendor.css -->
+      <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+      <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+      <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+      <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,client}) app/app.css -->
+    <link rel="stylesheet" href="app/app.css">
+      <!-- injector:css -->
+      <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/css/style.css">
+      <link rel="stylesheet" href="app/login/login.css">
+      <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="app/modules/modules.NewReceived/modules.NewReceived.css">
+      <link rel="stylesheet" href="app/modules/modules.css">
+      <link rel="stylesheet" href="app/modules/modules.customer/modules.customer.css">
+      <link rel="stylesheet" href="app/modules/modules.delivery/modules.delivery.css">
+      <link rel="stylesheet" href="app/modules/modules.editCustomer/modules.editCustomer.css">
+      <link rel="stylesheet" href="app/modules/modules.editReceived/modules.editReceived.css">
+      <link rel="stylesheet" href="app/modules/modules.editStock/modules.editStock.css">
+      <link rel="stylesheet" href="app/modules/modules.home/modules.home.css">
+      <link rel="stylesheet" href="app/modules/modules.newCustomer/modules.newCustomer.css">
+      <link rel="stylesheet" href="app/modules/modules.orders/modules.orders.css">
+      <link rel="stylesheet" href="app/modules/modules.production/modules.production.css">
+      <link rel="stylesheet" href="app/modules/modules.received/modules.received.css">
+      <link rel="stylesheet" href="app/modules/modules.stocks/modules.stocks.css">
+      <link rel="stylesheet" href="components/modal/modal.css">
+      <!-- endinjector -->
+    <!-- endbuild -->
+  </head>
+  <body ng-app="rwncApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->    
+    <div ui-view class="full-height"></div>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-XXXXX-X');
+      ga('send', 'pageview');
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- build:js({client,node_modules}) app/vendor.js -->
+      <!-- bower:js -->
+      <script src="bower_components/jquery/dist/jquery.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+      <script src="bower_components/underscore/underscore.js"></script>
+      <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,client}) app/app.js -->
+        <script src="app/app.js"></script>
+          <!-- injector:js -->
+          <script src="app/config/apiConfig.js"></script>
+          <script src="app/customerService/customerService.service.js"></script>
+          <script src="app/httpRequest/httpRequest.service.js"></script>
+          <script src="app/js/angular-validator-rules.js"></script>
+          <script src="app/js/angular-validator.js"></script>
+          <script src="app/login/login.controller.js"></script>
+          <script src="app/login/login.js"></script>
+          <script src="app/main/main.controller.js"></script>
+          <script src="app/main/main.js"></script>
+          <script src="app/modules/modules.controller.js"></script>
+          <script src="app/modules/modules.customer/modules.customer.controller.js"></script>
+          <script src="app/modules/modules.customer/modules.customer.js"></script>
+          <script src="app/modules/modules.delivery/modules.delivery.controller.js"></script>
+          <script src="app/modules/modules.delivery/modules.delivery.js"></script>
+          <script src="app/modules/modules.editCustomer/modules.editCustomer.controller.js"></script>
+          <script src="app/modules/modules.editCustomer/modules.editCustomer.js"></script>
+          <script src="app/modules/modules.editCustomer/modules.newCustomer.controller.js"></script>
+          <script src="app/modules/modules.editReceived/modules.NewReceived.controller.js"></script>
+          <script src="app/modules/modules.editReceived/modules.editReceived.controller.js"></script>
+          <script src="app/modules/modules.editReceived/modules.editReceived.js"></script>
+          <script src="app/modules/modules.editStock/modules.editStock.controller.js"></script>
+          <script src="app/modules/modules.editStock/modules.editStock.js"></script>
+          <script src="app/modules/modules.home/modules.home.controller.js"></script>
+          <script src="app/modules/modules.home/modules.home.js"></script>
+          <script src="app/modules/modules.js"></script>
+          <script src="app/modules/modules.orders/modules.orders.controller.js"></script>
+          <script src="app/modules/modules.orders/modules.orders.js"></script>
+          <script src="app/modules/modules.production/modules.production.controller.js"></script>
+          <script src="app/modules/modules.production/modules.production.js"></script>
+          <script src="app/modules/modules.received/modules.received.controller.js"></script>
+          <script src="app/modules/modules.received/modules.received.js"></script>
+          <script src="app/modules/modules.stocks/modules.stocks.controller.js"></script>
+          <script src="app/modules/modules.stocks/modules.stocks.js"></script>
+          <script src="components/modal/modal.service.js"></script>
+          <script src="components/navbar/navbar.controller.js"></script>
+          <!-- endinjector -->
+        <!-- endbuild -->
+</body>
+</html>
