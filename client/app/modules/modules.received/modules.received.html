@@ -69,7 +69,21 @@
           <th>Type</th>
           <th>Length</th>
           <th style="width: 10px;"></th>
-        </tr>                  
+        </tr>
+          <tr ng-repeat="receive in receives">
+          <td>{{receive.receivedId}}</td>
+          <td>{{receive.opening}}</td>
+          <td>{{receive.diameter}}</td>
+          <td>{{receive.width}}</td>
+          <td>{{receive.clampThickness}}</td>
+          <td>{{receive.type}}</td>
+          <td>{{receive.length}}</td>
+          <td>
+             <a class=" " ng-click="editReceive(receive)">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </a>             
+          </td>
+        </tr>
       </table>
     </div>
   </div>

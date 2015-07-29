@@ -14,4 +14,5 @@ config.api.allStocks='stock';
 config.api.getTypes='alltypes';
 config.api.getMaterial='allmaterials ';
 config.api.received='received';
+config.api.receives='receives';
 
