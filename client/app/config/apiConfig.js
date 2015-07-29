@@ -13,4 +13,5 @@ config.api.customer='customer';
 config.api.allStocks='stock';
 config.api.getTypes='alltypes';
 config.api.getMaterial='allmaterials ';
+config.api.received='received';
 
