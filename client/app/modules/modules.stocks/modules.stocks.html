@@ -152,105 +152,21 @@
           <th>Length</th>
           <th style="width: 10px;"></th>
         </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr ng-repeat="stock in allStocks">
+          <td>{{stock.stockId}}</td>
+          <td>{{stock.opening}}</td>
+          <td>{{stock.diameter}}</td>
+          <td>{{stock.width}}</td>
+          <td>{{stock.clampThickness}}</td>
+          <td>{{stock.type}}</td>
+          <td>{{stock.length}}</td>
           <td>
              <a class=" " ui-sref="modules.editStock">
               <span class="glyphicon glyphicon-pencil"></span>
             </a>             
           </td>
         </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>
-            <a class=" " ui-sref="modules.editStock">
-              <span class="glyphicon glyphicon-pencil"></span>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>
-            <a class=" " ui-sref="modules.editStock">
-              <span class="glyphicon glyphicon-pencil"></span>
-            </a>
-          </td>
-
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>
-            <a class=" " ui-sref="modules.editStock">
-              <span class="glyphicon glyphicon-pencil"></span>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>
-            <a class=" " ui-sref="modules.editStock">
-              <span class="glyphicon glyphicon-pencil"></span>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>
-            <a class=" " ui-sref="modules.editStock">
-              <span class="glyphicon glyphicon-pencil"></span>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>
-            <a class=" " ui-sref="modules.editStock">
-              <span class="glyphicon glyphicon-pencil"></span>
-            </a>
-          </td>
-        </tr>        
+             
       </table>
     </div>
   </div>
