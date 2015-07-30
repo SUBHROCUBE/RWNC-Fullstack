@@ -4,7 +4,7 @@ angular.module('rwncApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('modules.addItem', {
-        url: '/order/orderItem/addItem',
+        url: '/order/:parentOrderId/addItem',
         templateUrl: 'app/modules/modules.addEditItem/modules.addEditItem.html',
         controller: 'ModulesAddItemCtrl'
       })

@@ -9,7 +9,7 @@ angular.module('rwncApp')
             var deferred = $q.defer();
             var api=config.api.getTypes;
             if(type==null){
-                httpRequest.get(api).then(function(response){
+                httpRequest.get(api).then(function(response){                    
                     type=response.data;
                     deferred.resolve(type);
                 })    
@@ -24,7 +24,7 @@ angular.module('rwncApp')
             var deferred = $q.defer();
             if(material==null){
                 var api=config.api.getMaterial;
-                httpRequest.get(api).then(function(response){
+                httpRequest.get(api).then(function(response){                    
                     material=response.data;
                     deferred.resolve(material);
                 })    
