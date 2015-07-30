@@ -151,15 +151,15 @@
           <th style="width: 10px;"></th>
         </tr>
         <tr ng-repeat="order in orders"><!--  -->
+          <td>{{order.parentOrderId}}</td>
           <td>{{order.orderId}}</td>
-          <td>{{order.itemId}}</td>
           <td>{{order.opening}} * {{order.diameter}}</td>
           <td>{{order.type}}</td>
           <td>{{order.material}}</td>
           <td>{{order.orderDate | date:"dd-MM-yyyy"}}</td>
           <td>{{order.status}}</td>
           <td>
-             <a class=" " ng-click="openOrderDetails({})">
+             <a class=" " ng-click="openOrderDetails(order)">
               <span class="glyphicon glyphicon-chevron-right"></span>
             </a>             
           </td>

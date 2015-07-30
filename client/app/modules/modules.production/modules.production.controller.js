@@ -1,6 +1,11 @@
 'use strict';
 
 angular.module('rwncApp')
-  .controller('ModulesProductionCtrl', function ($scope) {
-    $scope.message = 'Hello';
-  });
+  .controller('ModulesProductionCtrl', ['$scope','$state',function ($scope,$state) {
+    $scope.$parent.module="production";
+    
+    $scope.addToOrder=function(){
+    	$state.go('modules.addToProduction');	
+    }   
+
+  }]);

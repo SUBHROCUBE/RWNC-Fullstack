@@ -12,7 +12,8 @@
           </div>
           <div class="col-md-7">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2" ng-model="filterCustomerName" ng-readonly="true">              
+              <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2" 
+               ng-readonly="true" ng-model="parentOrderId">              
             </div>
           </div>
         </div>         
@@ -36,16 +37,16 @@
           <th>Status</th>
           <th style="width: 10px;"></th>
         </tr>
-          <tr  >
-          <td>{{customer.alias}} </td>
-          <td>{{customer.name}}</td>
-          <td>{{customer.spocName}} </td>
-          <td>{{customer.contact1}} </td>
-          <td>{{customer.contact2}}</td>
-          <td>{{customer.address}}</td>
-          <td>{{customer.email1}}</td>
+          <tr  ng-repeat="item in itemList">
+          <td>{{item.parentOrderId}}</td>
+          <td>{{item.orderId}}</td>
+          <td>{{item.opening}} * {{item.diameter}}</td>
+          <td>{{item.type}}</td>
+          <td>{{item.material}}</td>
+          <td>{{item.orderDate | date:"dd-MM-yyyy"}}</td>
+          <td>{{item.status}}</td>
           <td>
-             <a class=" " ng-click="editItem()">
+             <a class=" " ng-click="editItem(item)">
               <span class="glyphicon glyphicon-pencil"></span>
             </a>             
           </td>          

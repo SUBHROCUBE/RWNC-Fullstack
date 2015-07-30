@@ -1,22 +1,34 @@
 'use strict';
 
 angular.module('rwncApp')
-  .controller('ModulesOrderItemCtrl', ['$scope','$log','$state','$stateParams','httpRequest','editCustomerHelper'
-   ,function ($scope,$log,$state,$stateParams,httpRequest,editCustomerHelper){
-  	$scope.$parent.module="orders";    
+  .controller('ModulesOrderItemCtrl', ['$scope','$log','$state','$stateParams','httpRequest','orderService'
+   ,function ($scope,$log,$state,$stateParams,httpRequest,orderService){
+  	$scope.$parent.module="orders";
+    $scope.itemList=[];  
     $scope.addItem=function(){
       if(angular.isUndefined(parentOrderId)) return;
     	$state.go("modules.addItem",{"parentOrderId":parentOrderId});
-    }
+    };
 
     $scope.editItem=function(item){
     	$state.go("modules.editItem");
-    }
-    var parentOrderId=$stateParams.parentOrderId;
-    if(angular.isUndefined(parentOrderId)){
+    };
+    var parentOrderId=$stateParams.parentOrderId || orderService.getParentOrderId();
+    $scope.parentOrderId=parentOrderId;
+    /*console.log("---",parentOrderId);*/
+    if(angular.isUndefined(parentOrderId) || parentOrderId==null){
       //i.e. if new Order
-      //get new parentOrderId for server.TODO
-      parentOrderId=12;
-
+      //get new parentOrderId for server.TODO      
+    }
+    else{
+      //Existing order get details from server            
+      var api=config.api.orders;
+      var filter={};
+      filter.parentOrderId=parentOrderId;
+      httpRequest.postData(api,filter)
+      .then(function(data){
+        $scope.itemList=data.data;
+        /*console.log("Filterd bby parent",data)*/
+      });
     }
   }]);

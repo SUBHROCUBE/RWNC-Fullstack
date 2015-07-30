@@ -1,24 +1,26 @@
 'use strict';
 
 angular.module('rwncApp')
-  .controller('ModulesOrdersCtrl', ['$scope','$log','$state','httpRequest','editCustomerHelper','getMasterData'
-   ,function ($scope,$log,$state,httpRequest,editCustomerHelper,getMasterData) {
+  .controller('ModulesOrdersCtrl', ['$scope','$log','$state','httpRequest','orderService','getMasterData'
+   ,function ($scope,$log,$state,httpRequest,orderService,getMasterData) {
       $scope.$parent.module="orders";
   		$scope.isFilterCollapsed=true;
       $scope.orderFilter={};
       getMasterData.getType()
       .then(function(data){
-        $scope.types=data.data;
+        $scope.types=data;
       });
       getMasterData.getMaterial()
       .then(function(data){
-        $scope.materials=data.data;
+        $scope.materials=data;
       });
 
     	$scope.openOrderDetails=function(order){
-    		$state.go("modules.orderItem",{ordrId:order.id});
+    		$state.go("modules.orderItem",{parentOrderId:order.parentOrderId});;
     	};
-    	$scope.newOrder=function(){	
+    	$scope.newOrder=function(){
+        //clear previouse order record
+        orderService.clearParentOrderId();
     		$state.go("modules.orderItem");
     	};
 
