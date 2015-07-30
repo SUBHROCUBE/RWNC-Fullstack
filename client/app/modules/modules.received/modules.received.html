@@ -12,8 +12,9 @@
           </div>
           <div class="col-md-8">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Customer name" aria-describedby="basic-addon2">
-              <span class="input-group-btn" id=""><button class="btn btn-primary">Search</button></span>
+              <input type="text" ng-model="selectedCustomer" class="form-control" placeholder="Customer name" aria-describedby="basic-addon2" typeahead="customer as customer.alias for customer in customers">
+              <span class="input-group-btn" id=""><button ng-click="serchCustomer()" class="btn btn-primary">Search</button></span>
+               
             </div>
           </div>
         </div>         

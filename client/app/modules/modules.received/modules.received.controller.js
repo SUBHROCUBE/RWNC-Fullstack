@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('rwncApp')
-  .controller('ModulesReceivedCtrl', ['$scope','$log','$state','httpRequest','received'
-   ,function ($scope,$log,$state,httpRequest,received) {
+  .controller('ModulesReceivedCtrl', ['$scope','$log','$state','httpRequest','received','getCustomers'
+   ,function ($scope,$log,$state,httpRequest,received,getCustomers) {
     $scope.$parent.module="received";
        var receiveList=[];
        $scope.receives=[]
@@ -16,10 +16,17 @@ angular.module('rwncApp')
     	$event.stopPropagation();
      	$scope.ToOpened=true;
      };
-       
-    var getReceive=function(){
+    $scope.customers=getCustomers.getAllCustomers();
+    $log.log($scope.selectedCustomer)
+    
+    $scope.serchCustomer=function(){
+        var custId=$scope.selectedCustomer.id;
+        getReceive({customerId:custId})
+    }
+    
+    var getReceive=function(obj){
         var api=config.api.receives;
-        httpRequest.postData(api)
+        httpRequest.postData(api,obj)
         .then(function(response){
           receiveList=response.data;
           $scope.receives=response.data;
