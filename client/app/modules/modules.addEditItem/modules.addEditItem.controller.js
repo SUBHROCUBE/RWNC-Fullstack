@@ -3,16 +3,18 @@
 angular.module('rwncApp')
   .controller('ModulesAddItemCtrl', ['$scope','$log','$state','$stateParams','$validator','httpRequest','getMasterData','orderService'
    ,function ($scope,$log,$state,$stateParams,$validator,httpRequest,getMasterData,orderService) {
-  	  $scope.itme={};
   	  $scope.$parent.module="orders";
+
+  	  $scope.item={};
+  	  $scope.item.itemRawReady="ready";	  
   	  getMasterData.getType()
       .then(function(data){
       	console.log(data);
-        $scope.types=data.data;
+        $scope.types=data ;
       });
       getMasterData.getMaterial()
       .then(function(data){
-        $scope.materials=data.data;
+        $scope.materials=data;
       });
   	  var parentOrderId=$stateParams.parentOrderId;
   	  console.log(parentOrderId);
@@ -20,8 +22,10 @@ angular.module('rwncApp')
   	  	//if(angular.isUndefined(parentOrderId)) return;
   	  	$validator.validate($scope,'item')
   	  	.then(function(success){
-  	  			$scope.item.customerId=1;
-  	  			//$scope.item.parentOrderId
+  	  			if(parentOrderId)
+  	  				$scope.item.parentOrderId=parentOrderId;
+  	  			$scope.item.customerId=1;  	  			
+	 			//$scope.item.parentOrderId
   	  			console.log(JSON.stringify($scope.item));
   	  			var api=config.api.addEditOrder;
   	  			httpRequest.postData(api,$scope.item)

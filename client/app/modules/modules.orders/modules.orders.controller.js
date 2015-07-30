@@ -6,6 +6,7 @@ angular.module('rwncApp')
       $scope.$parent.module="orders";
   		$scope.isFilterCollapsed=true;
       $scope.orderFilter={};
+      $scope.pageSize=10;
       getMasterData.getType()
       .then(function(data){
         $scope.types=data;
