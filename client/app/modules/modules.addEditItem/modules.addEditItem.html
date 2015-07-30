@@ -1,0 +1,143 @@
+<div >          
+  <!--toggle sidebar button-->         
+  <h2 class="page-header">
+       Add Item             
+  </h2>
+  <ol class="breadcrumb">
+	  <li><a >Order</a></li>
+	  <li class=><a >Order Details</a></li>
+	  <li class="active">New Item</li>
+  </ol>
+  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+  <form name="editForm.form" ng-submit="createItem()"> 
+  	<div class="row">
+		<div class="col-md-4">
+			<div class="form-group">
+				<label for="code">Customer</label>
+				<input type="text" class="form-control" id="code" ng-model="item.customer" validator="[required]">
+			</div>
+        </div>
+		<div class="col-md-2">
+			<div class="form-group">
+				<label for="code">Wiredia</label>
+				<input type="text" class="form-control" id="code" ng-model="item.itemDiameter" validator="[required]">
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="form-group">
+				<label for="opening">Opening</label>
+				<input type="text" class="form-control" id="opening" name="opening" ng-model="item.itemOpening" validator="[required]">
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="form-group">
+				<label for="wiredian" >Material</label>
+				<select class="form-control" ng-model="item.itemMaterial">
+					<option ng-repeat="material in materials" value="{{material}}">{{material}}</option>       
+				</select>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="form-group">
+				<label for="type">Type</label>
+					<select ng-model="item.itemType" class="form-control">						
+						<option ng-repeat="type in types" value="{{type}}">{{type}}</option>        
+					</select>
+			</div>
+		</div>
+    </div>  		
+  	<div class="row">     
+  		<div class="col-md-2">
+        <div class="form-group">
+          <label for="width">Length</label>
+          <input type="text" class="form-control" id="width" name="widht" ng-model="item.length" validator="[required]">
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <label for="thickness">Width</label>
+          <input type="text" class="form-control" id="thickness" name="thickness" ng-model="item.itemWidth">
+          <!-- validator="[email]" -->
+        </div>
+      </div>
+      <div class="col-md-2">
+       <div class="form-group">
+          <label for="wiredia" style="display:block">Is clamped</label>
+          <select ng-model=" a" class="form-control" ng-model="item.itemClamped">
+            <option value="">All</option>
+            <option value="Green">Clamped</option>            
+            <option value="Red">Not clamped</option>            
+          </select>
+        </div>
+      </div>
+    	<div class="col-md-2">
+  			<div class="form-group">
+			    <label for="threshold">C Pos</label>
+			    <input type="text" class="form-control" id="threshold" name="threshold" ng-model="item.itemClampPosition" validator="[required]">
+		  	</div>
+  	  	</div>
+  	  	<div class="col-md-2">
+        <div class="form-group">
+          <label for="rawReady">C length</label>
+          <input type="text" class="form-control" id="rawReady" name="rawReady" ng-model="item.itemClampLength" validator="[required]">
+        </div>
+      </div>
+      <div class="col-md-2">
+  			<div class="form-group">
+			    <label for="threshold">C Thickness</label>
+			    <input type="text" class="form-control" id="threshold" name="threshold" 
+          ng-model="item.itemClampThickness" validator="[required]">
+		  	</div>
+  	  </div>     
+    </div>
+    <div class="row">           
+        <div class="col-md-3">
+        <div class="form-group">
+          <label for="threshold">Rate</label>
+          <input type="text" class="form-control" id="threshold" name="threshold" ng-model="item.orderRate" validator="[required]">
+        </div>
+      </div>    
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="threshold">Quantity</label>
+          <input type="text" class="form-control" id="threshold" name="threshold" ng-model="item.orderQuantity" validator="[required]">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="threshold">Weight</label>
+          <input type="text" class="form-control" id="threshold" name="threshold" ng-model="item.orderWeight" validator="[required]">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="threshold">Delivery Date</label>
+          <input type="text" class="form-control" id="threshold" name="threshold" ng-model="customer.deliveryDate" validator="[required]">
+        </div>
+      </div>     
+    </div>  
+
+    <div class="row">      
+  		<div class="col-md-6">
+  			<div class="form-group">
+			    <label for="material">Clamped Descrition</label>
+			    <textarea type="text" class="form-control" id="material" name="material" ng-model="item.itemClampDescription" ></textarea>
+		  	</div>
+  		</div>
+  		<div class="col-md-6">
+	        <div class="form-group">
+		        <label for="rawReady">Description</label>
+		        <textarea type="text" class="form-control" id="material" name="material" ng-model="item.itemDescription" ></textarea>
+	        </div>
+      	</div>  		
+  	</div>  	
+  	  	<div class="row">
+  		<div class="col-md-6">
+  			 <button class="btn btn-primary pull-right" type="submit">Save</button>  			 
+  		</div>
+  		<div class="col-md-6">
+  			<a class="btn btn-default pull-left">Cancle</a>
+  		</div> 
+  	</div>
+  </form>
+</div>

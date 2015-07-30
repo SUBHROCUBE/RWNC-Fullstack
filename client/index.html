@@ -7,13 +7,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="/">
-    <title></title>
+    <title>RWNC</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+      <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
       <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
       <!-- endbower -->
     <!-- endbuild -->
@@ -24,6 +25,8 @@
       <link rel="stylesheet" href="app/css/style.css">
       <link rel="stylesheet" href="app/login/login.css">
       <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="app/modules/modules.OrderItem/modules.OrderItem.css">
+      <link rel="stylesheet" href="app/modules/modules.addEditItem/modules.addEditItem.css">
       <link rel="stylesheet" href="app/modules/modules.css">
       <link rel="stylesheet" href="app/modules/modules.customer/modules.customer.css">
       <link rel="stylesheet" href="app/modules/modules.delivery/modules.delivery.css">
@@ -46,7 +49,7 @@
 
     <!-- Add your site or application content here -->    
     <div ui-view class="full-height"></div>
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -55,7 +58,7 @@
 
       ga('create', 'UA-XXXXX-X');
       ga('send', 'pageview');
-    </script>
+    </script>-->
 
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -80,15 +83,17 @@
         <script src="app/app.js"></script>
           <!-- injector:js -->
           <script src="app/config/apiConfig.js"></script>
-          <script src="app/customerService/customerService.service.js"></script>
-          <script src="app/getMasterData/getMasterData.service.js"></script>
-          <script src="app/httpRequest/httpRequest.service.js"></script>
+          <script src="app/config/appConfig.js"></script>
           <script src="app/js/angular-validator-rules.js"></script>
           <script src="app/js/angular-validator.js"></script>
           <script src="app/login/login.controller.js"></script>
           <script src="app/login/login.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="app/modules/modules.OrderItem/modules.OrderItem.controller.js"></script>
+          <script src="app/modules/modules.OrderItem/modules.OrderItem.js"></script>
+          <script src="app/modules/modules.addEditItem/modules.addEditItem.controller.js"></script>
+          <script src="app/modules/modules.addEditItem/modules.addEditItem.js"></script>
           <script src="app/modules/modules.controller.js"></script>
           <script src="app/modules/modules.customer/modules.customer.controller.js"></script>
           <script src="app/modules/modules.customer/modules.customer.js"></script>
@@ -114,8 +119,12 @@
           <script src="app/modules/modules.stocks/modules.stocks.controller.js"></script>
           <script src="app/modules/modules.stocks/modules.stocks.js"></script>
           <script src="app/received/received.service.js"></script>
+          <script src="app/services/customerService.service.js"></script>
+          <script src="app/services/getMasterData.service.js"></script>
+          <script src="app/services/httpRequest.service.js"></script>
+          <script src="app/services/orderService.service.js"></script>
+          <script src="app/services/stockService.service.js"></script>
           <script src="app/stockFilter/stockFilter.controller.js"></script>
-          <script src="app/stockService/stockService.service.js"></script>
           <script src="components/modal/modal.service.js"></script>
           <script src="components/navbar/navbar.controller.js"></script>
           <!-- endinjector -->

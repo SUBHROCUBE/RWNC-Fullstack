@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 angular.module('rwncApp')
   .config(function ($stateProvider) {
@@ -8,4 +8,4 @@ angular.module('rwncApp')
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'
       });
-  });
+  });*/

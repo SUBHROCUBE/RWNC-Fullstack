@@ -19,7 +19,7 @@ angular.module('rwncApp')
      	$scope.ToOpened=true;
      };
      
-     $scope.$watch('filterCustomerName',function(newValue,oldValue){      
+     $scope.$watch('filterCustomerName',function(newValue,oldValue){    
         if(newValue!="")    
           $scope.allCustomers=_.filter(customerMasterList, function(cust){ 
                                     return cust.alias.toLocaleLowerCase().includes(newValue.toLocaleLowerCase());
