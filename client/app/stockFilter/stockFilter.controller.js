@@ -6,11 +6,11 @@ angular.module('rwncApp')
     $scope.materials=[]
     $scope.stockFilter={};
     getMasterData.getType().then(function(data){
-        $scope.types=data.data;
+        $scope.types=data;
     });
    
     getMasterData.getMaterial().then(function(data){
-        $scope.materials=data.data;
+        $scope.materials=data;
     })
     
     $scope.submit=function(){
