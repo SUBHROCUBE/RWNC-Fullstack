@@ -59,9 +59,9 @@
           <label for="added">Order from</label>
           <div class="input-group">
             <input type="text" class="form-control" id="added" name="added" placeholder=""
-               datepicker-popup  ng-model="orderFilter.orderStartdt" is-open="StartOpened"    
+               datepicker-popup  ng-model="orderFilter.orderStartdt" is-open="status.orderStatDtOpened"    
                close-text="Close" readonly>    
-            <span class="input-group-addon btn" ng-click="openStart($event)">
+            <span class="input-group-addon btn" ng-click="orderStartDtOpen($event)">
               <i class="glyphicon glyphicon-calendar"></i> 
             </span>
           </div>
@@ -73,8 +73,8 @@
           <label for="toDate">Order to</label>
           <div class="input-group">
             <input type="text" class="form-control" id="toDate" name="toDate" 
-            datepicker-popup  ng-model="orderFilter.orderTodt" is-open="ToOpened" close-text="Close" placeholder="" readonly>    
-            <span class="input-group-addon btn" ng-click="openTo($event)"><i class="glyphicon glyphicon-calendar">
+            datepicker-popup  ng-model="orderFilter.orderTodt" is-open="status.orderEndDtOpened" close-text="Close" placeholder="" readonly>    
+            <span class="input-group-addon btn" ng-click="orderEndDtOpen($event)"><i class="glyphicon glyphicon-calendar">
             </i></span>
           </div>
         </div>
@@ -84,9 +84,9 @@
           <label for="added">Delivery from</label>
           <div class="input-group">
             <input type="text" class="form-control" id="deliveryFrom" name="deliveryFrom" placeholder=""
-               datepicker-popup  ng-model="orderFilter.deliveryStartdt" is-open="StartOpened"    
+               datepicker-popup="{{format}}"  ng-model="orderFilter.deliveryStartdt" is-open="status.deliveryStatDtOpened"    
                close-text="Close" readonly>    
-            <span class="input-group-addon btn" ng-click="openStart($event)">
+            <span class="input-group-addon btn" ng-click="deliveryStartDtOpen($event)">
               <i class="glyphicon glyphicon-calendar"></i> 
             </span>
           </div>
@@ -98,8 +98,8 @@
           <label for="toDate">Delivery to</label>
           <div class="input-group">
             <input type="text" class="form-control" id="deliveryTo" name="deliveryTo" 
-            datepicker-popup  ng-model="orderFilter.deliveryTotdt" is-open="ToOpened" close-text="Close" placeholder="" readonly>    
-            <span class="input-group-addon btn" ng-click="openTo($event)"><i class="glyphicon glyphicon-calendar">
+            datepicker-popup="{{format}}"  ng-model="orderFilter.deliveryTotdt" is-open="status.deliveryEndDtOpened" close-text="Close" placeholder="" readonly>    
+            <span class="input-group-addon btn" ng-click="deliveryEndDtOpen($event)"><i class="glyphicon glyphicon-calendar">
             </i></span>
           </div>
         </div>

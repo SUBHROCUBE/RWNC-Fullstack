@@ -40,6 +40,46 @@ angular.module('rwncApp')
         $scope.orderFilter={};
         getFilteredOrders();
       };
+  /* Date picker functionality */     
+      
+       $scope.today = function() {
+            $scope.orderFilter.deliveryTotdt = new Date();
+           $scope.orderFilter.deliveryStartdt = new Date();
+          };
+       
+          $scope.today();
+
+            $scope.status = {
+            deliveryStatDtOpened: false,
+            deliveryEndDtOpened: false,
+                orderStatDtOpened: false,
+           orderEndDtOpened: false
+          };   
+
+        $scope.deliveryStartDtOpen = function($event) {
+         $event.preventDefault();
+       $event.stopPropagation();
+        $scope.status.deliveryStatDtOpened = true;
+      };
+        $scope.deliveryEndDtOpen = function($event) {
+             $event.preventDefault();
+           $event.stopPropagation();
+            $scope.status.deliveryEndDtOpened = true;
+          };
+       
+         $scope.orderStartDtOpen = function($event) {
+         $event.preventDefault();
+       $event.stopPropagation();
+        $scope.status.orderStatDtOpened = true;
+      };
+        $scope.orderEndDtOpen = function($event) {
+             $event.preventDefault();
+           $event.stopPropagation();
+            $scope.status.orderEndDtOpened = true;
+          };
+
+       $scope.format='dd/MM/yyyy'
+       
       $scope.applyFilters=function(){
         var filter={};
         if(angular.isDefined($scope.orderFilter.customer))
