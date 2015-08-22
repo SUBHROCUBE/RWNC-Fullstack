@@ -1,3 +1,231 @@
-<div class="col-md-12">
-This is the modules.productionDetails view.
+<div class="prod-details">
+	<h2 class="page-header">
+	        Order Details             
+	</h2>
+	<div>
+		<div class="row">
+		<div class="col-md-4">
+			<div class="form-group">
+				<label for="code">Customer</label>
+				<label  class="form-control" id="code">{{item.customer}}</label>
+			</div>
+        </div>
+		<div class="col-md-2">
+			<div class="form-group">
+				<label for="code">Wiredia</label>
+				<label  class="form-control" id="code">{{item.itemDiameter}}</label>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="form-group">
+				<label for="opening">Opening</label>
+				<label class="form-control" id="opening" name="opening" >{{item.itemOpening}}</label>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="form-group">
+				<label for="wiredian" >Material</label>
+				<label class="form-control" >{{item.itemMaterial}}
+				</label>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="form-group">
+				<label for="type">Type</label>
+					<label  class="form-control">{{item.itemType}}						
+					</label>
+			</div>
+		</div>
+    </div>  		
+  	<div class="row">     
+  		<div class="col-md-2">
+        <div class="form-group">
+          <label for="width">Length</label>
+          <label  class="form-control" id="width" name="widht">{{item.length}} </label>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <label for="thickness">Width</label>
+          <label  class="form-control" id="thickness" name="thickness">{{item.itemWidth}} </label>
+        </div>
+      </div>
+      <div class="col-md-2">
+       <div class="form-group">
+          <label for="wiredia" style="display:block">Is clamped</label>
+          <label class="form-control">{{item.itemClamped}} </label>
+        </div>
+      </div>
+    	<div class="col-md-2">
+  			<div class="form-group">
+			    <label for="threshold">C Pos</label>
+			    <input  class="form-control" id="threshold" name="threshold">{{item.itemClampPosition}}
+			     </label>
+		  	</div>
+  	  	</div>
+  	  	<div class="col-md-2">
+        <div class="form-group">
+          <label for="rawReady">C length</label>
+          <input  class="form-control" id="rawReady" name="rawReady">{{item.itemClampLength}} </label>
+        </div>
+      </div>
+      <div class="col-md-2">
+  			<div class="form-group">
+			    <label for="threshold">C Thickness</label>
+			    <label  class="form-control" id="threshold" name="threshold">
+			    	{{item.itemClampThickness}}</label>
+		  	</div>
+  	  </div>     
+    </div>
+    <div class="row">           
+        <div class="col-md-3">
+        <div class="form-group">
+          <label for="threshold">Rate</label>
+          <label class="form-control" id="threshold" name="threshold">{{item.orderRate}}</label>
+        </div>
+      </div>    
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="threshold">Quantity</label>
+          <label type="text" class="form-control" id="threshold" name="threshold">{{item.orderQuantity}}
+           </label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="threshold">Weight</label>
+          <label  class="form-control" id="threshold" name="threshold" >{{item.orderWeight}}
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="threshold">Delivery Date</label>
+          <label  class="form-control" id="threshold" name="threshold"   >{{customer.deliveryDate}}
+          </label>
+        </div>
+      </div>     
+    </div>  
+
+    <div class="row">      
+  		<div class="col-md-6">
+  			<div class="form-group">
+			    <label for="material">Clamped Descrition</label>
+			    <label  class="form-control textarea-form-control" id="material" name="material" >{{item.itemClampDescription}}</label>
+		  	</div>
+  		</div>
+  		<div class="col-md-6">
+	        <div class="form-group">
+		        <label for="rawReady">Description</label>
+		        <label class="form-control textarea-form-control" id="material" name="material" >
+		         {{item.itemDescription}} </label>
+	        </div>
+      	</div>  		
+  	</div>  	
+  </div>
+  	<div class="panel panel-default">
+		<div class="panel-heading table-heading">
+		    Item used
+		    <span class="glyphicon glyphicon-chevron-up pull-right" aria-hidden="true" ng-click="isItemUsedCollapsed=false" ng-show="isItemUsedCollapsed"></span>
+   			<span class="glyphicon glyphicon-chevron-down pull-right"  aria-hidden="true" ng-click="isItemUsedCollapsed=true" ng-hide="isItemUsedCollapsed"></span>          
+		</div>
+		<div class="panel-body" collapse="isItemUsedCollapsed">
+			<table class="table">
+				<tr>
+					<th>Tpye</th>
+					<th>Material</th>
+					<th>Wire dia</th>
+					<th>Weight</th>
+					<th>Quantity</th>
+					<th></th>
+				</tr>
+				<tr ng-repeat="item in items">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><input type="text" class="form-control"></td>
+					<td><input type="text" class="form-control"></td>
+					<td><input type="text"class="form-control" ></td>
+					<td><input type="text"class="form-control"></td>
+					<td><input type="text" class="form-control"></td>
+					<td>
+						<a>
+							<span class="glyphicon glyphicon-plus icon-vertical-center"></span>
+						</a>	
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading table-heading">
+		    Order status
+		    <span class="glyphicon glyphicon-chevron-up pull-right" aria-hidden="true" ng-click="isorderStatusOpened=false" ng-show="isorderStatusOpened"></span>
+   			<span class="glyphicon glyphicon-chevron-down pull-right"  aria-hidden="true" ng-click="isorderStatusOpened=true" ng-hide="isorderStatusOpened"></span>          
+		</div>
+	<div class="panel-body" collapse="isorderStatusOpened">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">					
+					<label for="expStart">Expected start date</label>
+					<div class="input-group">
+						<input type="text" class="form-control" id="expStart" name="toDate" 
+	            			datepicker-popup  ng-model="date.Todt" is-open="datePicker.expStart" close-text="Close" placeholder="" readonly>    
+	            		<span class="input-group-addon btn" ng-click="openDatePopUp($event,'expStart')"><i class="glyphicon glyphicon-calendar"></i></span>
+            		</div>
+          		</div>
+			</div>	        
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="code">Actual start date</label>
+					<div class="input-group">
+						<input type="text" class="form-control" id="expStart" name="toDate" 
+	            			datepicker-popup  ng-model="date.Todt" is-open="datePicker.actualStart" close-text="Close" placeholder="" readonly>    
+	            		<span class="input-group-addon btn" ng-click="openDatePopUp($event,'actualStart')"><i class="glyphicon glyphicon-calendar"></i></span>
+            		</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">					
+						<label for="endStart">End data</label>
+						<div class="input-group">
+							<input type="text" class="form-control" id="endStart" name="toDate" 
+		            			datepicker-popup  ng-model="date.Todt" is-open="datePicker.endStart" close-text="Close" placeholder="" readonly>    
+		            		<span class="input-group-addon btn" ng-click="openDatePopUp($event,'endStart')">
+		            			<i class="glyphicon glyphicon-calendar"></i></span>
+            			</div>
+				</div>
+			</div>			
+	    </div>
+	    <div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="code">Machine</label>
+					<input type="text"  class="form-control" id="code">
+				</div>
+	        </div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="code">Dice</label>
+					<input type="text" id="code" class="form-control">
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label for="opening">Status</label>
+					<input type="text" class="form-control" id="opening" name="opening">
+				</div>
+			</div>
+			<div class=row>
+				<div class="col-md-6 pull-right">
+					<button class="btn btn-primary"> Save </button>
+				</div>
+			</div>			
+	    </div>
+	</div>	
+	</div>	
 </div>

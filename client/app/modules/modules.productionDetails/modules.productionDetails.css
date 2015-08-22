@@ -1,0 +1,12 @@
+.prod-details .form-control{
+	overflow: auto;
+}
+.prod-details .textarea-form-control{
+	height: 50px
+}
+h3.page-header{
+	font-size: 19px
+}
+.icon-vertical-center{
+	padding-top: 50%
+}
