@@ -40,6 +40,11 @@ angular.module('rwncApp')
         $scope.orderFilter={};
         getFilteredOrders();
       };
+       
+    $scope.open = function($event) {
+    $scope.status.opened = true;
+  };
+
       $scope.applyFilters=function(){
         var filter={};
         if(angular.isDefined($scope.orderFilter.customer))
