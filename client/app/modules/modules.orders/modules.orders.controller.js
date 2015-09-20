@@ -47,7 +47,7 @@ angular.module('rwncApp')
            $scope.orderFilter.deliveryStartdt = new Date();
           };
        
-          $scope.today();
+       //   $scope.today();
 
             $scope.status = {
             deliveryStatDtOpened: false,
@@ -78,7 +78,7 @@ angular.module('rwncApp')
             $scope.status.orderEndDtOpened = true;
           };
 
-       $scope.format='dd/MM/yyyy'
+       $scope.format='dd-MMM-yy'
        
       $scope.applyFilters=function(){
         var filter={};

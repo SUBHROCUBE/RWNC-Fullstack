@@ -4,8 +4,8 @@
        Add Item             
   </h2>
   <ol class="breadcrumb">
-	  <li><a >Order</a></li>
-	  <li class=><a >Order Details</a></li>
+	  <li><a ui-sref='modules.orders'>Order</a></li>
+	  <li class=><a ui-sref="modules.orderItem">Order Details</a></li>
 	  <li class="active">New Item</li>
   </ol>
   <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
@@ -136,7 +136,7 @@
   			 <button class="btn btn-primary pull-right" type="submit">Save</button>  			 
   		</div>
   		<div class="col-md-6">
-  			<a class="btn btn-default pull-left">Cancle</a>
+  			<a ui-sref="modules.orderItem" class="btn btn-default pull-left">Cancle</a>
   		</div> 
   	</div>
   </form>

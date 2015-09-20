@@ -59,7 +59,7 @@
           <label for="added">Order from</label>
           <div class="input-group">
             <input type="text" class="form-control" id="added" name="added" placeholder=""
-               datepicker-popup  ng-model="orderFilter.orderStartdt" is-open="status.orderStatDtOpened"    
+               datepicker-popup="{{format}}"  ng-model="orderFilter.orderStartdt" is-open="status.orderStatDtOpened"    
                close-text="Close" readonly>    
             <span class="input-group-addon btn" ng-click="orderStartDtOpen($event)">
               <i class="glyphicon glyphicon-calendar"></i> 
@@ -73,7 +73,7 @@
           <label for="toDate">Order to</label>
           <div class="input-group">
             <input type="text" class="form-control" id="toDate" name="toDate" 
-            datepicker-popup  ng-model="orderFilter.orderTodt" is-open="status.orderEndDtOpened" close-text="Close" placeholder="" readonly>    
+            datepicker-popup="{{format}}"  ng-model="orderFilter.orderTodt" is-open="status.orderEndDtOpened" close-text="Close" placeholder="" readonly>    
             <span class="input-group-addon btn" ng-click="orderEndDtOpen($event)"><i class="glyphicon glyphicon-calendar">
             </i></span>
           </div>
