@@ -3,6 +3,7 @@
 angular.module('rwncApp')
   .service('getMasterData', function (httpRequest, $q) {
     var type=null;
+    var statuses=null;
     var material=null;
     return {
         getType:function(){
@@ -19,7 +20,20 @@ angular.module('rwncApp')
                         
             return deferred.promise;
         },
-        
+        getStatuses:function(){
+            var deferred = $q.defer();
+            var api=config.api.getStatuses;
+            if(statuses==null){
+                httpRequest.get(api).then(function(response){                    
+                    statuses=response.data;
+                    deferred.resolve(statuses);
+                })    
+            }
+            else
+                deferred.resolve(statuses);
+                        
+            return deferred.promise;
+        },
         getMaterial:function(){
             var deferred = $q.defer();
             if(material==null){
