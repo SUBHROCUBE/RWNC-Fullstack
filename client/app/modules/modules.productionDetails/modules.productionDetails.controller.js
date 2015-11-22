@@ -2,7 +2,9 @@
 
 angular.module('rwncApp')
   .controller('ModulesProductionDetailsCtrl', function ($scope, $stateParams, $state) {
-	console.log($stateParams.selectedOrderForProduction.parentOrderId);
+	$scope.selectedOrderItemForProduction = $stateParams.selectedOrderForProduction;
+	console.log($stateParams.selectedOrderForProduction);
+
   	$scope.$parent.module="production";
   	$scope.datePicker={expStart:false};  	
   	$scope.openDatePopUp=function($event,dateVar){
