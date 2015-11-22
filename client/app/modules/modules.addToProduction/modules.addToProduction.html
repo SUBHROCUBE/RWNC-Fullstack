@@ -14,7 +14,7 @@
     	<div class="col-md-3">
 	       <div class="form-group">
 	          <label for="type">Type</label>
-	          <select ng-model="poductionFilter.type" class="form-control">
+	          <select ng-model="orderFilter.type" class="form-control">
 	            <option value="ALL">All</option>
 	             <option ng-repeat="type in types" value="{{type}}">{{type}}</option>        
 	          </select>
@@ -48,7 +48,7 @@
         <button type="submit" class="btn btn-primary pull-right" ng-click="applyFilters()">Apply filter</button>
       </div>
       <div class="col-md-6">
-        <button ui-sref="order" class="btn" ng-click="clearFilters()">Clear filter</button>
+        <button class="btn" ng-click="clearFilters()">Clear filter</button>
       </div>
     </div>
    </form>

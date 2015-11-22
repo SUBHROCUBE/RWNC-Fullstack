@@ -40,7 +40,7 @@ angular.module('rwncApp')
         if(angular.isDefined($scope.productionFilter.customer))
           filter.customerId=$scope.productionFilter.customer.id;
 
-        if(angular.isDefined($scope.productionFilter.orderId))
+        if(angular.isDefined($scope.productionFilter.orderId) && $scope.productionFilter.orderId.length>0)
           filter.orderId=$scope.productionFilter.orderId
 
         if(angular.isDefined($scope.productionFilter.type)&& !angular.equals($scope.productionFilter.type, "ALL"))
