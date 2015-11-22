@@ -3,8 +3,10 @@
 angular.module('rwncApp')
   .controller('ModulesAddToProductionCtrl',['$scope','$state','getMasterData','httpRequest', function ($scope,$state,getMasterData,httpRequest) {
   	$scope.$parent.module="production";
-    $scope.addToProduction=function(){
-    	$state.go('modules.productionDetails');
+    $scope.addToProduction=function(selectedOrderForProduction){
+	console.log(selectedOrderForProduction);
+	$scope.selectedOrderForProduction = selectedOrderForProduction;
+    	$state.go('modules.productionDetails', {selectedOrderForProduction: selectedOrderForProduction});
     };
 
       $scope.orderFilter={};
