@@ -1,12 +1,14 @@
 'use strict';
 
 angular.module('rwncApp')
-  .controller('ModulesOrdersCtrl', ['$scope','$log','$state','httpRequest','orderService','getMasterData'
-   ,function ($scope,$log,$state,httpRequest,orderService,getMasterData) {
+  .controller('ModulesOrdersCtrl', ['$scope', '$log', '$state', 'httpRequest', 'orderService', 'getMasterData', 'getCustomers'
+    , function ($scope, $log, $state, httpRequest, orderService, getMasterData, getCustomers) {
       $scope.$parent.module="orders";
   		$scope.isFilterCollapsed=true;
       $scope.orderFilter={};
       $scope.pageSize=10;
+      $scope.currentPage=1;
+      $scope.typeAheasCustomersSearch=getCustomers.getAllCustomers();
       getMasterData.getType()
       .then(function(data){
         $scope.types=data;

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rwncApp')
-  .controller('ModulesCustomerCtrl',['$scope','$log','$state','httpRequest','editCustomerHelper'
+  .controller('ModulesCustomerCtrl', ['$scope', '$log', '$state', 'httpRequest', 'editCustomerHelper'
    ,function ($scope,$log,$state,httpRequest,editCustomerHelper) {
     $scope.$parent.module="customer";
     $scope.filterCustomerName="";
@@ -19,7 +19,7 @@ angular.module('rwncApp')
      	$scope.ToOpened=true;
      };
      
-     $scope.$watch('filterCustomerName',function(newValue,oldValue){    
+    $scope.$watch('filterCustomerName',function(newValue,oldValue){    
         if(newValue!="")    
           $scope.allCustomers=_.filter(customerMasterList, function(cust){ 
                                     return cust.alias.toLocaleLowerCase().includes(newValue.toLocaleLowerCase());

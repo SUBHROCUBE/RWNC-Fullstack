@@ -1,3 +1,170 @@
-<div class="col-md-12">
-This is the modules.delivery view.
-</div>
+<div >          
+  <!--toggle sidebar button-->         
+  <h2 class="page-header">
+        Delivery             
+  </h2>
+  <div class="panel panel-default">
+  <div class="panel-heading table-heading" >Filters      
+   <span class="glyphicon glyphicon-chevron-up pull-right" aria-hidden="true" ng-click="isFilterCollapsed=false" ng-show="isFilterCollapsed"></span>
+   <span class="glyphicon glyphicon-chevron-down pull-right"  aria-hidden="true" ng-click="isFilterCollapsed=true" ng-hide="isFilterCollapsed"></span>   
+  </div>
+  <div class="panel-body" collapse="isFilterCollapsed">
+      <form name="" ng-submit="submit()"> 
+    <div class="row compact-row">  
+    	<div class="col-md-4">
+        	<div class="form-group">
+          		<label for="customer">Customer</label>
+          		<input type="text" class="form-control" id="customer" name="customer" 
+              ng-model="orderFilter.customer" typeahead="customer as customer.alias for customer in typeAheasCustomersSearch"
+              placeholder="">
+        	</div>
+      	</div>
+      	<div class="col-md-2">
+       		<div class="form-group">
+	          <label for="wiredia">Wiredia</label>
+	          <input type="text" class="form-control" id="wiredia" ng-model="orderFilter.diameter" name="wiredia" placeholder="">
+        	</div>
+      	</div>
+
+      	<div class="col-md-2">
+	        <div class="form-group">
+	          <label for="opening">Opening</label>
+	          <input type="text" class="form-control" ng-model="orderFilter.opening" id="opening" name="opening" placeholder="">
+        	</div>
+      	</div>
+      	<div class="col-md-2">
+	        <div class="form-group">
+	          <label for="material">Material</label>
+	          <select ng-model="orderFilter.material" class="form-control" name="material">
+	            <option value="ALL">All</option>
+	            <option ng-repeat="material in materials" value="{{material}}">{{material}}</option>       
+	          </select>
+	        </div>
+      	</div>
+      <div class="col-md-2">
+       <div class="form-group">
+          <label for="type">Type</label>
+          <select ng-model="orderFilter.type" class="form-control">
+            <option value="ALL">All</option>
+             <option ng-repeat="type in types" value="{{type}}">{{type}}</option>        
+          </select>
+        </div>
+      </div>
+    </div><!--/row-->
+    
+    <div class="row ">  
+      <div class="col-md-2">
+       <div class="form-group">
+          <label for="added">Order from</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="added" name="added" placeholder=""
+               datepicker-popup="{{format}}"  ng-model="orderFilter.orderStartdt" is-open="status.orderStatDtOpened"    
+               close-text="Close" readonly>    
+            <span class="input-group-addon btn" ng-click="orderStartDtOpen($event)">
+              <i class="glyphicon glyphicon-calendar"></i> 
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label for="toDate">Order to</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="toDate" name="toDate" 
+            datepicker-popup="{{format}}"  ng-model="orderFilter.orderTodt" is-open="status.orderEndDtOpened" close-text="Close" placeholder="" readonly>    
+            <span class="input-group-addon btn" ng-click="orderEndDtOpen($event)"><i class="glyphicon glyphicon-calendar">
+            </i></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+       <div class="form-group">
+          <label for="added">Delivery from</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="deliveryFrom" name="deliveryFrom" placeholder=""
+               datepicker-popup="{{format}}"  ng-model="orderFilter.deliveryStartdt" is-open="status.deliveryStatDtOpened"    
+               close-text="Close" readonly>    
+            <span class="input-group-addon btn" ng-click="deliveryStartDtOpen($event)">
+              <i class="glyphicon glyphicon-calendar"></i> 
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <div class="form-group">
+          <label for="toDate">Delivery to</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="deliveryTo" name="deliveryTo" 
+            datepicker-popup="{{format}}"  ng-model="orderFilter.deliveryTotdt" is-open="status.deliveryEndDtOpened" close-text="Close" placeholder="" readonly>    
+            <span class="input-group-addon btn" ng-click="deliveryEndDtOpen($event)"><i class="glyphicon glyphicon-calendar">
+            </i></span>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-2">
+	        <div class="form-group">
+	          <label for="opening">Status</label>
+	          <select ng-model="orderFilter.status" class="form-control">
+              <option value="ALL">All</option>
+              <option value="DELIVERED">Delivered</option>              
+              <option value="IN PRODUCTION">In Production</option>
+              <option value="ON HOLD">On Hold</option>
+            </select>
+        	</div>
+      </div> -->
+      	<div class="col-md-2">
+	        <div class="form-group">
+	          <label for="opening">XXX</label>
+	          <input type="text" class="form-control"  id="opening" name="opening" placeholder="">
+        	</div>
+      	</div>
+    </div><!--/row-->
+    <div class="row">
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-primary pull-right" ng-click="applyFilters()">Apply filter</button>
+      </div>
+      <div class="col-md-6">
+        <button ui-sref="order" class="btn" ng-click="clearFilters()">Clear filter</button>
+      </div>
+    </div>
+      </form></div>
+ </div>
+ <div class="row compact-row">
+ 	<div class="col-md-2">
+ 		<button class="btn btn-primary" ng-click="newDelivery()">New Delivery</button>
+ 	</div>
+ </div>  
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped table-bordered">
+        <tr class="table-heading">
+          <th>Parent Delivery ID</th>
+          <th>Delivery ID</th>
+          <th>Opening * Wiredia</th>
+          <th>Type</th>
+          <th>Material</th>
+          <th>Order Date</th>
+          <th>Status</th>
+          <th style="width: 10px;"></th>
+        </tr>
+        <tr ng-repeat="order in orders | pgStartFrom:(currentPage-1)*pageSize | limitTo:pageSize"><!--  -->
+          <td>{{order.parentOrderId}}</td>
+          <td>{{order.orderId}}</td>
+          <td>{{order.opening}} * {{order.diameter}}</td>
+          <td>{{order.type}}</td>
+          <td>{{order.material}}</td>
+          <td>{{order.orderDate | date:"dd-MM-yyyy"}}</td>
+          <td>{{order.status}}</td>
+          <td>
+             <a class=" " >
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>             
+          </td>
+        </tr>
+      </table>
+      <pagination ng-show="orders.length>1" boundary-links="true" total-items="orders.length" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+    </div>
+  </div>
+</div>    

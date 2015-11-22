@@ -17,7 +17,7 @@ angular.module('rwncApp')
      	$scope.ToOpened=true;
      };
     $scope.customers=getCustomers.getAllCustomers();
-    $log.log($scope.selectedCustomer)
+    //$log.log($scope.selectedCustomer)
     
     $scope.serchCustomer=function(){
         var custId=$scope.selectedCustomer.id;
