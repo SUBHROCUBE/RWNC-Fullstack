@@ -14,29 +14,30 @@
     <div class="row compact-row">  
     	<div class="col-md-3">
         	<div class="form-group">
-          		<label for="customer">Customer</label>
-          		<input type="text" class="form-control" id="customer" name="customer" 
-              ng-model="poductionFilter.customer"
-              placeholder="">
+          	      <label for="customer">Customer</label>
+	              <input type="text" ng-model="productionFilter.customer" class="form-control" placeholder="Customer name" aria-describedby="basic-addon2" typeahead="customer as customer.alias for customer in customers">
         	</div>
       	</div>
       	<div class="col-md-3">
        		<div class="form-group">
 	          <label for="wiredia">Order Id</label>
-	          <input type="text" class="form-control" id="wiredia" ng-model="poductionFilter.orderId" name="wiredia" placeholder="">
+	          <input type="text" class="form-control" id="orderId" ng-model="productionFilter.orderId" name="orderId" placeholder="">
         	</div>
       	</div>
 
       	<div class="col-md-3">
 	        <div class="form-group">
 	          <label for="opening">Status</label>
-	          <input type="text" class="form-control" ng-model="poductionFilter.opening" id="opening" name="opening" placeholder="">
+	          <select ng-model="productionFilter.productionStatus" class="form-control">
+	            <option value="ALL">All</option>
+	             <option ng-repeat="status in statuses" value="{{status.status_name}}">{{status.status_name}}</option>        
+	          </select>
         	</div>
       	</div>      	
 	      <div class="col-md-3">
 	       <div class="form-group">
 	          <label for="type">Type</label>
-	          <select ng-model="poductionFilter.type" class="form-control">
+	          <select ng-model="productionFilter.type" class="form-control">
 	            <option value="ALL">All</option>
 	             <option ng-repeat="type in types" value="{{type}}">{{type}}</option>        
 	          </select>
@@ -48,7 +49,7 @@
         <button type="submit" class="btn btn-primary pull-right" ng-click="applyFilters()">Apply filter</button>
       </div>
       <div class="col-md-6">
-        <button ui-sref="order" class="btn" ng-click="clearFilters()">Clear filter</button>
+        <button class="btn" ng-click="clearFilters()">Clear filter</button>
       </div>
     </div>
    </form>
@@ -56,7 +57,7 @@
  </div>
  <div class="row compact-row">
  	<div class="col-md-2">
- 		<button class="btn btn-primary" ng-click="addToOrder()">Add to production</button>
+ 		<button class="btn btn-primary" ng-click="goToAddToProductionPage()">Add to production</button>
  	</div>
  </div>  
   <div class="row">
@@ -73,15 +74,15 @@
           <th>Status</th>
           <th style="width: 10px;"></th>
         </tr>
-        <tr ><!--ng-repeat="order in orders"  -->
-           <td>{{order.parentOrderId}}</td>
-          <td>{{order.parentOrderId}}</td>
-          <td>{{order.orderId}}</td>
-          <td>{{order.opening}} * {{order.diameter}}</td>
-          <td>{{order.type}}</td>
-          <td>{{order.material}}</td>
-          <td>{{order.orderDate | date:"dd-MM-yyyy"}}</td>
-          <td>{{order.status}}</td>
+        <tr ng-repeat="production in productions">
+          <td>{{production.customerAlias}}</td>
+          <td>{{production.parentOrderId}}</td>
+          <td>{{production.orderId}}</td>
+          <td>{{production.opening}} * {{production.diameter}}</td>
+          <td>{{production.type}}</td>
+          <td>{{production.material}}</td>
+          <td>{{production.startDate | date:"dd-MM-yyyy"}}</td>
+          <td>{{production.status}}</td>
           <td>
              <a class=" " ng-click="openOrderDetails(order)">
               <span class="glyphicon glyphicon-chevron-right"></span>

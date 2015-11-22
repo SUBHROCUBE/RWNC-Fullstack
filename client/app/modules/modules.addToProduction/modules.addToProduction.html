@@ -72,14 +72,14 @@
           <th>Remainig Qt.</th>          
           <th style="width: 10px;"></th>
         </tr>
-        <tr ><!--ng-repeat="order in orders"  -->
+        <tr ng-repeat="order in orders">
           <td>{{order.parentOrderId}}</td>
-          <td>{{order.parentOrderId}}</td>
-          <td>{{order.orderId}}</td>
           <td>{{order.opening}} * {{order.diameter}}</td>
           <td>{{order.type}}</td>
+          <td>{{order.length}}</td>
+          <td>{{order.width}}</td>
           <td>{{order.material}}</td>
-          <td>{{order.orderDate | date:"dd-MM-yyyy"}}</td>
+          <td>{{order.orderQuantityRemaining}}</td>
           <td>
              <a class=" " ng-click="addToProduction(order)">
               <span class="glyphicon glyphicon-plus"></span>
