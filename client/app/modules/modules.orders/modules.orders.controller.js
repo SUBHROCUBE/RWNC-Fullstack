@@ -8,7 +8,8 @@ angular.module('rwncApp')
       $scope.orderFilter={};
       $scope.pageSize=10;
       $scope.currentPage=1;
-      $scope.typeAheasCustomersSearch=getCustomers.getAllCustomers();
+      var typeAheasCustomersSearch=getCustomers.getAllCustomers();
+	   console.log("Customers",typeAheasCustomersSearch);
       getMasterData.getType()
       .then(function(data){
         $scope.types=data;
@@ -38,6 +39,33 @@ angular.module('rwncApp')
         });
       };
       getFilteredOrders();
+	  
+	 var customerMasterList=[];
+		$scope.allCustomers=[];
+	
+	  $scope.getFilteredCustomer=function(customerValue){
+		console.log("Master Customers",customerMasterList);
+		$scope.allCustomers=_.filter(customerMasterList, function(cust){ 
+                                    return cust.alias.toLocaleLowerCase().includes(customerValue.toLocaleLowerCase());
+                               });
+		console.log("Filtered Customers",$scope.allCustomers);
+		return $scope.allCustomers;
+     };
+	 
+	  var getAllCustomers=function(){
+        var api=config.api.allCustomers;
+        httpRequest.get(api)
+        .then(function(response){
+          customerMasterList=response.data;
+          $scope.allCustomers=response.data;
+          $log.log(response);
+        });
+    }
+	
+	getAllCustomers();
+	  
+	  $scope.states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Dakota", "North Carolina", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
+	  
       $scope.clearFilters=function(){
         $scope.orderFilter={};
         getFilteredOrders();
@@ -84,8 +112,9 @@ angular.module('rwncApp')
        
       $scope.applyFilters=function(){
         var filter={};
+
         if(angular.isDefined($scope.orderFilter.customer))
-          filter.customerId=$scope.orderFilter.customer.customerId;
+          filter.customerId=$scope.orderFilter.customer.id;
 
         if(angular.isDefined($scope.orderFilter.diameter))
           filter.itemDiameter=$scope.orderFilter.diameter

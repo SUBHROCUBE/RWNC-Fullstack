@@ -1,7 +1,7 @@
 <div >          
   <!--toggle sidebar button-->         
   <h2 class="page-header">
-        orders             
+        Order            
   </h2>
   <div class="panel panel-default">
   <div class="panel-heading table-heading" >Filters      
@@ -15,7 +15,7 @@
         	<div class="form-group">
           		<label for="customer">Customer</label>
           		<input type="text" class="form-control" id="customer" name="customer" 
-              ng-model="orderFilter.customer" typeahead="customer as customer.alias for customer in typeAheasCustomersSearch"
+              ng-model="orderFilter.customer" typeahead="customer as customer.alias for customer in getFilteredCustomer($viewValue)"
               placeholder="">
         	</div>
       	</div>

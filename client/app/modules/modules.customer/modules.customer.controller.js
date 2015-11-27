@@ -7,7 +7,8 @@ angular.module('rwncApp')
     $scope.filterCustomerName="";
   	$scope.opened=false;
     var customerMasterList=[];
-    $scope.allCustomers=[];  
+    $scope.allCustomers=[];
+	$scope.alerts=editCustomerHelper.getAlerts();
      $scope.openStart=function($event){
      	$event.preventDefault();
     	$event.stopPropagation();
@@ -19,7 +20,8 @@ angular.module('rwncApp')
      	$scope.ToOpened=true;
      };
      
-    $scope.$watch('filterCustomerName',function(newValue,oldValue){    
+    $scope.$watch('filterCustomerName',function(newValue,oldValue){   
+		console.log(customerMasterList);
         if(newValue!="")    
           $scope.allCustomers=_.filter(customerMasterList, function(cust){ 
                                     return cust.alias.toLocaleLowerCase().includes(newValue.toLocaleLowerCase());
@@ -43,4 +45,10 @@ angular.module('rwncApp')
         $state.go('modules.editCustomer',{customerId:customer.id});
      };
      getAllCustomers();
+	 
+	 //dismiss alerts from UI
+	$scope.closeAlert = function(index) {
+    	$scope.alerts.splice(index, 1);
+  	};
+	
   }]);

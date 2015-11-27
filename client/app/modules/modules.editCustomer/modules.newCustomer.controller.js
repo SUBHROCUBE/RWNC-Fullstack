@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('rwncApp')
-  .controller('ModulesNewCustomerCtrl', ['$scope','$log','$validator','httpRequest' 
-	,function($scope,$log,$validator,httpRequest){
+  .controller('ModulesNewCustomerCtrl', ['$scope','$log','$validator','httpRequest','editCustomerHelper' 
+	,function($scope,$log,$validator,httpRequest,editCustomerHelper){
 	
 	//TO heighlight selected tab
 	$scope.$parent.module="customer";
@@ -27,15 +27,23 @@ angular.module('rwncApp')
 				if(response.status==200){
 					var alert={};
 					alert.type='success';
-					alert.msg='Customer edited successfully.'
-					$scope.alerts.push(alert);
+					alert.msg='Customer added successfully.'
+					editCustomerHelper.setAlerts(alert);
+					$state.go('modules.customer');
 				}
+			})
+			.catch(function(fallback) {
+			var alert={};
+			alert.type='danger';
+			alert.msg='Customer not added.'
+			editCustomerHelper.setAlerts(alert);
+			$state.go('modules.customer');
 			});	
           return;
         })
         .error(function() {
-        	//do nothing if error
-          return;
+        	//do nothing if error		
+          return console.log('error');
         });					
 	};
 }]);

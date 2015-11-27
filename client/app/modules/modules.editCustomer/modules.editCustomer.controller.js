@@ -14,7 +14,7 @@ angular.module('rwncApp')
 	$scope.editForm.form={};
 
 	//Get customer to edit stored in service in detailed page.
-	//If not available in service need to get it from seervice SERVICE NEEDED like get customer/:id
+	//If not available in service need to get it from service SERVICE NEEDED like get customer/:id
 	$scope.customer=editCustomerHelper.getCustomerToEdit();
 	$log.log($scope.customer);
 
@@ -38,15 +38,23 @@ angular.module('rwncApp')
 					var alert={};
 					alert.type='success';
 					alert.msg='Customer edited successfully.'
-					$scope.alerts.push(alert);
+					editCustomerHelper.setAlerts(alert);
+					$state.go('modules.customer');
 				}
+			})
+			.catch(function(fallback) {
+			var alert={};
+			alert.type='danger';
+			alert.msg='Customer not edited.'
+			editCustomerHelper.setAlerts(alert);
+			$state.go('modules.customer');
 			});
 		}	
           return;
         })
         .error(function() {
-        	//Error: do nothing.	
-          return console.log('error');
+        	//Error: do nothing.				
+			return console.log('error');
         });			
 	};
 
