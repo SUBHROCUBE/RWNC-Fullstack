@@ -14,7 +14,7 @@
 		<div class="col-md-4">
 			<div class="form-group">
 				<label for="code">Customer</label>
-				<input type="text" class="form-control" id="code" ng-model="item.customer" validator="[required]">
+				<input type="text" class="form-control" id="code" ng-model="item.customer" validator="[required]" typeahead="customer as customer.alias for customer in getFilteredCustomer($viewValue)" placeholder="">
 			</div>
         </div>
 		<div class="col-md-2">

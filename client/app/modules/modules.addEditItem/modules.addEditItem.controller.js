@@ -7,6 +7,45 @@ angular.module('rwncApp')
 
   	  $scope.item={};
   	  $scope.item.itemRawReady="ready";	  
+
+      var getFilteredOrders = function(filterObj){
+        if(angular.isUndefined(filterObj))
+          filterObj={};
+        var api=config.api.orders;
+        httpRequest.postData(api,filterObj)
+        .then(function(data){
+          console.log("Orders",data);
+          $scope.orders=data.data;
+        });
+      };
+      getFilteredOrders();
+	  
+	 var customerMasterList=[];
+		$scope.allCustomers=[];
+	
+	  $scope.getFilteredCustomer=function(customerValue){
+		console.log("Master Customers",customerMasterList);
+		$scope.allCustomers=_.filter(customerMasterList, function(cust){ 
+                                    return cust.alias.toLocaleLowerCase().includes(customerValue.toLocaleLowerCase());
+                               });
+		console.log("Filtered Customers",$scope.allCustomers);
+		return $scope.allCustomers;
+     };
+	 
+	  var getAllCustomers=function(){
+        var api=config.api.allCustomers;
+        httpRequest.get(api)
+        .then(function(response){
+          customerMasterList=response.data;
+          $scope.allCustomers=response.data;
+          $log.log(response);
+        });
+    }
+	
+	getAllCustomers();
+
+
+
   	  getMasterData.getType()
       .then(function(data){
       	console.log(data);
