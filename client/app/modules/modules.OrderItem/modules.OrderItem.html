@@ -8,7 +8,7 @@
       <form class="form-inline">
         <div class="form-group">
          <div class="col-md-5"> 
-            <label for="exampleInputName2">Parnet Order Id</label>
+            <label for="exampleInputName2">Parent Order Id</label>
           </div>
           <div class="col-md-7">
             <div class="input-group">
@@ -40,11 +40,11 @@
           <tr  ng-repeat="item in itemList">
           <td>{{item.parentOrderId}}</td>
           <td>{{item.orderId}}</td>
-          <td>{{item.opening}} * {{item.diameter}}</td>
-          <td>{{item.type}}</td>
-          <td>{{item.material}}</td>
+          <td>{{item.itemOpening}} * {{item.itemDiameter}}</td>
+          <td>{{item.itemType}}</td>
+          <td>{{item.itemMaterial}}</td>
           <td>{{item.orderDate | date:"dd-MM-yyyy"}}</td>
-          <td>{{item.status}}</td>
+          <td>{{item.orderStatus}}</td>
           <td>
              <a class=" " ng-click="editItem(item)">
               <span class="glyphicon glyphicon-pencil"></span>

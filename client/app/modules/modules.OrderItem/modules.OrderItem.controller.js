@@ -11,7 +11,7 @@ angular.module('rwncApp')
     };
 
     $scope.editItem=function(item){
-    	$state.go("modules.editItem");
+    	$state.go("modules.editItem",{itemToEdit:item});
     };
     var parentOrderId=$stateParams.parentOrderId || orderService.getParentOrderId();
     $scope.parentOrderId=parentOrderId;

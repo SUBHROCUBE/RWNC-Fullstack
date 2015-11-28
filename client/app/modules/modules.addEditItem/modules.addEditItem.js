@@ -11,6 +11,7 @@ angular.module('rwncApp')
       .state('modules.editItem', {
         url: '/order/orderItem/editItem',
         templateUrl: 'app/modules/modules.addEditItem/modules.addEditItem.html',
+        params: {itemToEdit:{}},
         controller: 'ModulesEditItemCtrl'
       });
   });

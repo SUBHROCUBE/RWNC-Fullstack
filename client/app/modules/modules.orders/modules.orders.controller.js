@@ -5,7 +5,11 @@ angular.module('rwncApp')
     , function ($scope, $log, $state, httpRequest, orderService, getMasterData, getCustomers) {
       $scope.$parent.module="orders";
   		$scope.isFilterCollapsed=true;
-      $scope.orderFilter={};
+      $scope.orderFilter={
+	itemMaterial:"ALL",
+	itemType:"ALL",
+	orderStatus:"ALL"		
+	};
       $scope.pageSize=10;
       $scope.currentPage=1;
       var typeAheasCustomersSearch=getCustomers.getAllCustomers();
@@ -116,17 +120,17 @@ angular.module('rwncApp')
         if(angular.isDefined($scope.orderFilter.customer))
           filter.customerId=$scope.orderFilter.customer.id;
 
-        if(angular.isDefined($scope.orderFilter.diameter))
-          filter.itemDiameter=$scope.orderFilter.diameter
+        if(angular.isDefined($scope.orderFilter.itemDiameter))
+          filter.itemDiameter=$scope.orderFilter.itemDiameter
 
-        if(angular.isDefined($scope.orderFilter.opening))
-          filter.itemOpening=$scope.orderFilter.opening;
+        if(angular.isDefined($scope.orderFilter.itemOpening))
+          filter.itemOpening=$scope.orderFilter.itemOpening;
 
-        if(angular.isDefined($scope.orderFilter.material)&& !angular.equals($scope.orderFilter.material, "ALL"))
-          filter.itemMaterial=$scope.orderFilter.material;
+        if(angular.isDefined($scope.orderFilter.itemMaterial)&& !angular.equals($scope.orderFilter.itemMaterial, "ALL"))
+          filter.itemMaterial=$scope.orderFilter.itemMaterial;
 
-        if(angular.isDefined($scope.orderFilter.type)&& !angular.equals($scope.orderFilter.type, "ALL"))
-          filter.itemType=$scope.orderFilter.type;
+        if(angular.isDefined($scope.orderFilter.itemType)&& !angular.equals($scope.orderFilter.itemType, "ALL"))
+          filter.itemType=$scope.orderFilter.itemType;
 
         if(angular.isDefined($scope.orderFilter.orderStartdt))
           filter.orderDateFrom=$scope.orderFilter.orderStartdt;
@@ -140,8 +144,8 @@ angular.module('rwncApp')
         if(angular.isDefined($scope.orderFilter.deliveryTotdt))
           filter.deliveryDateTo=$scope.orderFilter.deliveryTotdt;
 
-        if(angular.isDefined($scope.orderFilter.status) && !angular.equals($scope.orderFilter.status, "ALL") )
-          filter.orderStatus=$scope.orderFilter.status;
+        if(angular.isDefined($scope.orderFilter.orderStatus) && !angular.equals($scope.orderFilter.orderStatus, "ALL") )
+          filter.orderStatus=$scope.orderFilter.orderStatus;
 
         getFilteredOrders(filter);       
       }

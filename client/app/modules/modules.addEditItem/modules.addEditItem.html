@@ -50,7 +50,7 @@
   		<div class="col-md-2">
         <div class="form-group">
           <label for="width">Length</label>
-          <input type="text" class="form-control" id="width" name="widht" ng-model="item.length" validator="[required]">
+          <input type="text" class="form-control" id="width" name="width" ng-model="item.itemLength" validator="[required]">
         </div>
       </div>
       <div class="col-md-2">
@@ -63,10 +63,9 @@
       <div class="col-md-2">
        <div class="form-group">
           <label for="wiredia" style="display:block">Is clamped</label>
-          <select ng-model=" a" class="form-control" ng-model="item.itemClamped">
-            <option value="">All</option>
-            <option value="Green">Clamped</option>            
-            <option value="Red">Not clamped</option>            
+          <select class="form-control" ng-model="item.itemIsClamped">
+            <option value="1">Clamped</option>            
+            <option value="0">Not clamped</option>            
           </select>
         </div>
       </div>
@@ -85,8 +84,7 @@
       <div class="col-md-2">
   			<div class="form-group">
 			    <label for="threshold">C Thickness</label>
-			    <input type="text" class="form-control" id="threshold" name="threshold" 
-          ng-model="item.itemClampThickness" validator="[required]">
+			    <input type="text" class="form-control" id="threshold" name="threshold" ng-model="item.itemClampThickness" validator="[required]">
 		  	</div>
   	  </div>     
     </div>
@@ -112,10 +110,16 @@
       <div class="col-md-3">
         <div class="form-group">
           <label for="threshold">Delivery Date</label>
-          <input type="text" class="form-control" id="threshold" name="threshold" ng-model="customer.deliveryDate" validator="[required]">
-        </div>
-      </div>     
-    </div>  
+	  <div class="input-group">
+            <input type="text" class="form-control" id="added" name="added" placeholder=""
+               datepicker-popup="{{format}}"  ng-model="item.orderDeliveryDate" is-open="status.deliveryDtOpened"    
+               close-text="Close" readonly>    
+            <span class="input-group-addon btn" ng-click="deliveryDtOpened($event)">
+              <i class="glyphicon glyphicon-calendar"></i> 
+            </span>
+          </div>
+        </div>    
+   </div>  
 
     <div class="row">      
   		<div class="col-md-6">
@@ -136,7 +140,7 @@
   			 <button class="btn btn-primary pull-right" type="submit">Save</button>  			 
   		</div>
   		<div class="col-md-6">
-  			<a ui-sref="modules.orderItem" class="btn btn-default pull-left">Cancle</a>
+  			<a ui-sref="modules.orderItem" class="btn btn-default pull-left">Cancel</a>
   		</div> 
   	</div>
   </form>

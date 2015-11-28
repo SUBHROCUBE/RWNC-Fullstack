@@ -22,20 +22,20 @@
       	<div class="col-md-2">
        		<div class="form-group">
 	          <label for="wiredia">Wiredia</label>
-	          <input type="text" class="form-control" id="wiredia" ng-model="orderFilter.diameter" name="wiredia" placeholder="">
+	          <input type="text" class="form-control" id="wiredia" ng-model="orderFilter.itemDiameter" name="wiredia" placeholder="">
         	</div>
       	</div>
 
       	<div class="col-md-2">
 	        <div class="form-group">
 	          <label for="opening">Opening</label>
-	          <input type="text" class="form-control" ng-model="orderFilter.opening" id="opening" name="opening" placeholder="">
+	          <input type="text" class="form-control" ng-model="orderFilter.itemOpening" id="opening" name="opening" placeholder="">
         	</div>
       	</div>
       	<div class="col-md-2">
 	        <div class="form-group">
 	          <label for="material">Material</label>
-	          <select ng-model="orderFilter.material" class="form-control" name="material">
+	          <select ng-model="orderFilter.itemMaterial" class="form-control" name="material">
 	            <option value="ALL">All</option>
 	            <option ng-repeat="material in materials" value="{{material}}">{{material}}</option>       
 	          </select>
@@ -44,7 +44,7 @@
       <div class="col-md-2">
        <div class="form-group">
           <label for="type">Type</label>
-          <select ng-model="orderFilter.type" class="form-control">
+          <select ng-model="orderFilter.itemType" class="form-control">
             <option value="ALL">All</option>
              <option ng-repeat="type in types" value="{{type}}">{{type}}</option>        
           </select>
@@ -106,7 +106,7 @@
       <div class="col-md-2">
 	        <div class="form-group">
 	          <label for="opening">Status</label>
-	          <select ng-model="orderFilter.status" class="form-control">
+	          <select ng-model="orderFilter.orderStatus" class="form-control">
               <option value="ALL">All</option>
               <option value="DELIVERED">Delivered</option>              
               <option value="IN PRODUCTION">In Production</option>
@@ -114,12 +114,12 @@
             </select>
         	</div>
       </div>
-      	<div class="col-md-2">
+      	<!--div class="col-md-2">
 	        <div class="form-group">
 	          <label for="opening">XXX</label>
 	          <input type="text" class="form-control"  id="opening" name="opening" placeholder="">
         	</div>
-      	</div>
+      	</div-->
     </div><!--/row-->
     <div class="row">
       <div class="col-md-6">
@@ -152,11 +152,11 @@
         <tr ng-repeat="order in orders | pgStartFrom:(currentPage-1)*pageSize | limitTo:pageSize"><!--  -->
           <td>{{order.parentOrderId}}</td>
           <td>{{order.orderId}}</td>
-          <td>{{order.opening}} * {{order.diameter}}</td>
-          <td>{{order.type}}</td>
-          <td>{{order.material}}</td>
+          <td>{{order.itemOpening}} * {{order.itemDiameter}}</td>
+          <td>{{order.itemType}}</td>
+          <td>{{order.itemMaterial}}</td>
           <td>{{order.orderDate | date:"dd-MM-yyyy"}}</td>
-          <td>{{order.status}}</td>
+          <td>{{order.orderStatus}}</td>
           <td>
              <a class=" " ng-click="openOrderDetails(order)">
               <span class="glyphicon glyphicon-chevron-right"></span>
