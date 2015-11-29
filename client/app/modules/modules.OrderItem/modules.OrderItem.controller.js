@@ -4,9 +4,18 @@ angular.module('rwncApp')
   .controller('ModulesOrderItemCtrl', ['$scope','$log','$state','$stateParams','httpRequest','orderService'
    ,function ($scope,$log,$state,$stateParams,httpRequest,orderService){
   	$scope.$parent.module="orders";
-    $scope.itemList=[];  
+    $scope.itemList=[];
+
+	$scope.alerts=orderService.getAlerts();
+	
+	 //dismiss alerts from UI
+	$scope.closeAlert = function(index) {
+    		$scope.alerts.splice(index, 1);
+  	};
+
     $scope.addItem=function(){
       if(angular.isUndefined(parentOrderId)) return;
+	console.log(parentOrderId);
     	$state.go("modules.addItem",{"parentOrderId":parentOrderId});
     };
 

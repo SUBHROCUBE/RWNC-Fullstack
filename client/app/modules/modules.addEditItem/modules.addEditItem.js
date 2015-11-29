@@ -6,6 +6,7 @@ angular.module('rwncApp')
       .state('modules.addItem', {
         url: '/order/:parentOrderId/addItem',
         templateUrl: 'app/modules/modules.addEditItem/modules.addEditItem.html',
+	params:{parentOrderId:null},
         controller: 'ModulesAddItemCtrl'
       })
       .state('modules.editItem', {

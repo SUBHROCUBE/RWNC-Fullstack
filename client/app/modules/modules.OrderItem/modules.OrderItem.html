@@ -3,6 +3,7 @@
   <h2 class="page-header">
         Order Details             
   </h2>
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
   <div class="row compact-row">    
     <div class="col-md-10">
       <form class="form-inline">

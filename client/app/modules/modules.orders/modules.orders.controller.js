@@ -28,8 +28,9 @@ angular.module('rwncApp')
     	};
     	$scope.newOrder=function(){
         //clear previouse order record
-        orderService.clearParentOrderId();
-    		$state.go("modules.orderItem");
+        //orderService.clearParentOrderId();
+    		//$state.go("modules.orderItem");
+	$state.go("modules.addItem",{"parentOrderId":null});
     	};
 
       var getFilteredOrders = function(filterObj){

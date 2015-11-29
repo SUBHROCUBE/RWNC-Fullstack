@@ -32,17 +32,13 @@
 		<div class="col-md-2">
 			<div class="form-group">
 				<label for="wiredian" >Material</label>
-				<select class="form-control" ng-model="item.itemMaterial">
-					<option ng-repeat="material in materials" value="{{material}}">{{material}}</option>       
-				</select>
+				<select class="form-control" ng-model="item.itemMaterial" ng-options="material for material in materials" ></select>
 			</div>
 		</div>
 		<div class="col-md-2">
 			<div class="form-group">
 				<label for="type">Type</label>
-					<select ng-model="item.itemType" class="form-control">						
-						<option ng-repeat="type in types" value="{{type}}">{{type}}</option>        
-					</select>
+				<select ng-model="item.itemType" class="form-control" ng-options="type for type in types" ></select>
 			</div>
 		</div>
     </div>  		

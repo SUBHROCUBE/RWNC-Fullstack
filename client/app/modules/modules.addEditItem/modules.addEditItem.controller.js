@@ -43,12 +43,14 @@ angular.module('rwncApp')
         var parentOrderId = $stateParams.parentOrderId;
         console.log(parentOrderId);
 
+	$scope.item.parentOrderId=parentOrderId;
+
         $scope.createItem = function() {
             //if(angular.isUndefined(parentOrderId)) return;
             $validator.validate($scope, 'item')
                 .then(function(success) {
                         console.log($scope.item);
-			var filter = getFilteredCustomer.createFilters();
+			var filter = commonAddEditOrderItemService.createFilters($scope.item);
 
                         if (parentOrderId) {
                             $scope.item.parentOrderId = parentOrderId;
@@ -60,11 +62,24 @@ angular.module('rwncApp')
                                 console.log(data);
                                 if (data.status == 200) {
                                     orderService.setParentOrderId(data.parentOrderId);
+					//console.log("Add Success :"+$scope.item.parentOrderId);
+					//console.log("Data Parent Order Id :"+data.data.parentOrderId);
+
+					var alert={};
+					alert.type='success';
+					alert.msg='Order added successfully !'
+					orderService.setAlerts(alert);
+
+					$state.go("modules.orderItem",{parentOrderId:data.data.parentOrderId});
                                 }
                             });
                     },
                     function(error) {
                         //do nothing.
+					var alert={};
+					alert.type='danger';
+					alert.msg='Failed to add order ! .'
+					orderService.setAlerts(alert);
                     });
         }
     }])
@@ -128,23 +143,33 @@ getAllCustomers();
             $validator.validate($scope, 'item')
                 .then(function(success) {
                         console.log($scope.item);
-			var filter = getFilteredCustomer.createFilters();
+			var filter = commonAddEditOrderItemService.createFilters($scope.item);
 
-                        if (parentOrderId) {
-                            $scope.item.parentOrderId = parentOrderId;
-                        }
-                        console.log(JSON.stringify(filter));
+                        console.log("Edit Controller"+JSON.stringify(filter));
                         var api = config.api.addEditOrder;
                         httpRequest.postData(api, filter)
                             .then(function(data) {
                                 console.log(data);
                                 if (data.status == 200) {
                                     orderService.setParentOrderId(data.parentOrderId);
+
+					var alert={};
+					alert.type='success';
+					alert.msg='Order edited successfully !'
+					orderService.setAlerts(alert);
+
+					console.log("Edit Success :"+$scope.item.parentOrderId);
+					$state.go("modules.orderItem",{parentOrderId:$scope.item.parentOrderId});
                                 }
                             });
                     },
                     function(error) {
                         //do nothing.
+					var alert={};
+					alert.type='danger';
+					alert.msg='Failed to update order..'
+					orderService.setAlerts(alert);
+
                     });
         }
     }])
@@ -172,62 +197,71 @@ getAllCustomers();
 
         getAllCustomers();
 
-	var createFilters = function() {
+	var createFilters = function(item) {
 		                        var filter = {};
 
-                        if (angular.isDefined($scope.item.itemRawReady))
-                            filter.itemRawReady = $scope.item.itemRawReady;
+                        if (angular.isDefined(item.itemId))
+                            filter.itemId = item.itemId;
 
-                        if (angular.isDefined($scope.item.customer))
-                            filter.customerId = $scope.item.customer.id;
+                        if (angular.isDefined(item.orderId))
+                            filter.orderId = item.orderId;
 
-                        if (angular.isDefined($scope.item.itemDiameter))
-                            filter.itemDiameter = $scope.item.itemDiameter
+                        if (angular.isDefined(item.parentOrderId))
+                            filter.parentOrderId = item.parentOrderId;
 
-                        if (angular.isDefined($scope.item.itemOpening))
-                            filter.itemOpening = $scope.item.itemOpening;
+                        if (angular.isDefined(item.itemRawReady))
+                            filter.itemRawReady = item.itemRawReady;
 
-                        if (angular.isDefined($scope.item.itemMaterial) && !angular.equals($scope.item.itemMaterial, "ALL"))
-                            filter.itemMaterial = $scope.item.itemMaterial;
+                        if (angular.isDefined(item.customer))
+                            filter.customerId = item.customer.id;
 
-                        if (angular.isDefined($scope.item.itemType) && !angular.equals($scope.item.itemType, "ALL"))
-                            filter.itemType = $scope.item.itemType;
+                        if (angular.isDefined(item.itemDiameter))
+                            filter.itemDiameter = item.itemDiameter
 
-                        if (angular.isDefined($scope.item.itemLength))
-                            filter.itemLength = $scope.item.itemLength;
+                        if (angular.isDefined(item.itemOpening))
+                            filter.itemOpening = item.itemOpening;
 
-                        if (angular.isDefined($scope.item.itemWidth))
-                            filter.itemWidth = $scope.item.itemWidth;
+                        if (angular.isDefined(item.itemMaterial) && !angular.equals(item.itemMaterial, "ALL"))
+                            filter.itemMaterial = item.itemMaterial;
 
-                        if (angular.isDefined($scope.item.itemClamped))
-                            filter.itemClamped = $scope.item.itemClamped;
+                        if (angular.isDefined(item.itemType) && !angular.equals(item.itemType, "ALL"))
+                            filter.itemType = item.itemType;
 
-                        if (angular.isDefined($scope.item.itemClampPosition))
-                            filter.itemClampPosition = $scope.item.itemClampPosition;
+                        if (angular.isDefined(item.itemLength))
+                            filter.itemLength = item.itemLength;
 
-                        if (angular.isDefined($scope.item.itemClampDescription))
-                            filter.itemClampDescription = $scope.item.itemClampDescription;
+                        if (angular.isDefined(item.itemWidth))
+                            filter.itemWidth = item.itemWidth;
 
-                        if (angular.isDefined($scope.item.itemClampLength))
-                            filter.itemClampLength = $scope.item.itemClampLength;
+                        if (angular.isDefined(item.itemClamped))
+                            filter.itemClamped = item.itemClamped;
 
-                        if (angular.isDefined($scope.item.itemClampThickness))
-                            filter.itemClampThickness = $scope.item.itemClampThickness;
+                        if (angular.isDefined(item.itemClampPosition))
+                            filter.itemClampPosition = item.itemClampPosition;
 
-                        if (angular.isDefined($scope.item.itemDescription))
-                            filter.itemDescription = $scope.item.itemDescription;
+                        if (angular.isDefined(item.itemClampDescription))
+                            filter.itemClampDescription = item.itemClampDescription;
 
-                        if (angular.isDefined($scope.item.orderRate))
-                            filter.orderRate = $scope.item.orderRate;
+                        if (angular.isDefined(item.itemClampLength))
+                            filter.itemClampLength = item.itemClampLength;
 
-                        if (angular.isDefined($scope.item.orderQuantity))
-                            filter.orderQuantity = $scope.item.orderQuantity;
+                        if (angular.isDefined(item.itemClampThickness))
+                            filter.itemClampThickness = item.itemClampThickness;
 
-                        if (angular.isDefined($scope.item.orderWeight))
-                            filter.orderWeight = $scope.item.orderWeight;
+                        if (angular.isDefined(item.itemDescription))
+                            filter.itemDescription = item.itemDescription;
 
-                        if (angular.isDefined($scope.item.deliveryDate))
-                            filter.deliveryDate = $scope.item.deliveryDate;
+                        if (angular.isDefined(item.orderRate))
+                            filter.orderRate = item.orderRate;
+
+                        if (angular.isDefined(item.orderQuantity))
+                            filter.orderQuantity = item.orderQuantity;
+
+                        if (angular.isDefined(item.orderWeight))
+                            filter.orderWeight = item.orderWeight;
+
+                        if (angular.isDefined(item.orderDeliveryDate))
+                            filter.orderDeliveryDate = item.orderDeliveryDate;
 
 			return filter;
 	}

@@ -5,7 +5,7 @@ angular.module('rwncApp')
     $stateProvider
       .state('modules.orderItem', {
         url: '/order/:parentOrderId/orderItem',
-        param:{parentOrderId:''},
+        params:{parentOrderId:null},
         templateUrl: 'app/modules/modules.OrderItem/modules.OrderItem.html',
         controller: 'ModulesOrderItemCtrl'
       });
