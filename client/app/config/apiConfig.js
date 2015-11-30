@@ -11,6 +11,7 @@ config.api.recentLowStocks ='recent_low_stocks';
 config.api.allCustomers='all_customers';
 config.api.customer='customer';
 config.api.allStocks='stock';
+config.api.editStock='stock';
 config.api.getTypes='alltypes';
 config.api.getStatuses='status';
 config.api.getMaterial='allmaterials ';

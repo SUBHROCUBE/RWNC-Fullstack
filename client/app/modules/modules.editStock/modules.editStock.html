@@ -12,19 +12,19 @@
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="code">Code</label>
-			    <input type="text" class="form-control" ng-model="stock.stockId" id="code" >
+			    <input type="text" class="form-control" ng-model="stock.stockId" id="code" ng-disabled="true">
 		  	</div>
   		</div>
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="openingStock">Opening stock</label>
-			    <input type="text" class="form-control" id="openingStock" name="openingStock" ng-model="stock.opening">
+			    <input type="text" class="form-control" id="openingStock" name="openingStock" ng-model="stock.itemOpening" ng-disabled="true">
 		  	</div>
   		</div>
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="wiredian">Wirendian</label>
-			    <input type="text" class="form-control" id="wiredian" name="wiredian" ng-model="stock.diameter">
+			    <input type="text" class="form-control" id="wiredian" name="wiredian" ng-model="stock.itemDiameter" ng-disabled="true">
 		  	</div>
   		</div>
   	</div>
@@ -32,19 +32,19 @@
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="length">Lenght</label>
-			    <input type="text" class="form-control" id="length" name="length" ng-model="stock.length">
+			    <input type="text" class="form-control" id="length" name="length" ng-model="stock.itemLength" ng-disabled="true">
 		  	</div>
   		</div>
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="width">Width</label>
-			    <input type="text" class="form-control" id="width" name="widht" ng-model="stock.width">
+			    <input type="text" class="form-control" id="width" name="widht" ng-model="stock.itemWidth" ng-disabled="true">
 		  	</div>
   		</div>
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="thickness">Thickness</label>
-			    <input type="text" class="form-control" id="thickness" name="thickness" ng-model="stock.clampThickness">
+			    <input type="text" class="form-control" id="thickness" name="thickness" ng-model="stock.itemClampThickness" ng-disabled="true">
 		  	</div>
   		</div>
   	</div>
@@ -52,19 +52,19 @@
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="type">Type</label>
-			    <input type="text" class="form-control" id="type" name="type" ng-model="stock.type">
+			    <input type="text" class="form-control" id="type" name="type" ng-model="stock.itemType" ng-disabled="true">
 		  	</div>
   		</div>
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="material">Maerial</label>
-			    <input type="text" class="form-control" id="material" name="material" ng-model="stock.material">
+			    <input type="text" class="form-control" id="material" name="material" ng-model="stock.itemMaterial" ng-disabled="true">
 		  	</div>
   		</div>
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="rawReady">Raw /Ready</label>
-			    <input type="text" class="form-control" id="rawReady" name="rawReady" ng-model="stock.isRawReady">
+			    <input type="text" class="form-control" id="rawReady" name="rawReady" ng-model="stock.itemRawReady" ng-disabled="true">
 		  	</div>
   		</div>
   	</div>
@@ -72,19 +72,19 @@
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="threshold">Threshold</label>
-			    <input type="text" class="form-control" id="threshold" name="threshold" ng-model="stock.threshold">
+			    <input type="text" class="form-control" id="threshold" name="threshold" ng-model="stock.itemThreshold" ng-disabled="true">
 		  	</div>
   		</div>
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="description">Description</label>
-			    <textarea class="form-control" id="description" name="description" ng-model="stock.description"></textarea>
+			    <textarea class="form-control" id="description" name="description" ng-model="stock.itemDescription" ng-disabled="true"></textarea>
 		  	</div>
   		</div>
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="isClamped">Is clamped</label>
-			    <input type="text" class="form-control" id="isClamped" name="isClamped" ng-model="stock.isClamp">
+			    <input type="text" class="form-control" id="isClamped" name="isClamped" ng-model="stock.itemClampStatus" ng-disabled="true">
 		  	</div>
   		</div>
   	</div>
@@ -92,19 +92,19 @@
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="clampAtSide">Clamp at side</label>
-			    <input type="text" class="form-control" id="clampAtSide" name="clampAtSide" ng-model="stock.clampPosition">
+			    <input type="text" class="form-control" id="clampAtSide" name="clampAtSide" ng-model="stock.itemClampPosition" ng-disabled="true">
 		  	</div>
   		</div>
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="clampLength">Clamp length</label>
-			    <input type="text" class="form-control" id="clampLength" name="clampLength"  ng-model="stock.clampLength">
+			    <input type="text" class="form-control" id="clampLength" name="clampLength"  ng-model="stock.itemClampLength" ng-disabled="true">
 		  	</div>
   		</div>
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="clampDescription">Clamp description</label>
-			    <textarea class="form-control" id="clampDescription" name="clampDescription" ng-model="stock.clampDescription"></textarea>			    
+			    <textarea class="form-control" id="clampDescription" name="clampDescription" ng-model="stock.itemClampDescription" ng-disabled="true"></textarea>			    
 		  	</div>
   		</div>
   	</div>
@@ -112,28 +112,28 @@
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="quantity">Quantity</label>
-			    <input type="text" class="form-control" id="quantity" name="quantity" ng-model="stock.quantity">
+			    <input type="text" class="form-control" id="quantity" name="quantity" ng-model="stock.stockQuantity">
 		  	</div>
   		</div>
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="wieght">Weight</label>
-			    <input type="text" class="form-control" id="wieght" name="wieght"  ng-model="stock.stockAmount">
+			    <input type="text" class="form-control" id="wieght" name="wieght"  ng-model="stock.stockWeight">
 		  	</div>
   		</div>
   		<div class="col-md-4">
   			<div class="form-group">
 			    <label for="batchNo">Batch no</label>
-			    <input type="text" class="form-control" id="batchNo" name="batchNo" ng-model="stock.batchNo">
+			    <input type="text" class="form-control" id="batchNo" name="batchNo" ng-model="stock.batchNo" ng-disabled="true">
 		  	</div>
   		</div>
   	</div>
   	<div class="row">
   		<div class="col-md-6">
-  			 <a class="btn btn-primary pull-right">Update</a>  			 
+  			 <a class="btn btn-primary pull-right" ui-sref="modules.stocks" ng-click="updateStock()">Update</a>  			 
   		</div>
   		<div class="col-md-6">
-  			<a class="btn btn-default pull-left" ui-sref="modules.stocks">Cancle</a>
+  			<a class="btn btn-default pull-left" ui-sref="modules.stocks">Cancel</a>
   		</div> 
   	</div>
   </form>

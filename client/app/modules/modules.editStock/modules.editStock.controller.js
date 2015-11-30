@@ -1,15 +1,15 @@
 'use strict';
 
 angular.module('rwncApp')
-  .controller('ModulesEditStockCtrl', function ($scope,$state,$log,$stateParams,$validator,httpRequest,stockService) {
+  .controller('ModulesEditStockCtrl',['$scope', '$state', '$log','$stateParams', 'httpRequest', 'stockService', function ($scope,$state,$log,$stateParams,httpRequest,stockService) {
    
     //TO heighlight selected tab	
 	$scope.$parent.module="stock";
 	//Messages to user
 	$scope.alerts=[];
     
-    $scope.stock=stockService.getStockToEdit()
-    $log.log($scope.stock)
+    $scope.stock=$stateParams.stockToEdit;
+    console.log($scope.stock)
     
     	//dismiss alerts from UI
 	$scope.closeAlert = function(index) {
@@ -17,11 +17,9 @@ angular.module('rwncApp')
   	};
     
       	//Submit form
-	$scope.submit=function(){
+	$scope.updateStock=function(){
+		console.log($scope.stock);
 		var url=config.api.editStock;
-		//start validations
-		$validator.validate($scope,'stock')
-		.success(function() {
 			//No error submit the form
           if($scope.stock.stockId){
 			httpRequest.putData(url,$scope.stock)
@@ -30,17 +28,12 @@ angular.module('rwncApp')
 				if(response.status==200){
 					var alert={};
 					alert.type='success';
-					alert.msg='Customer edited successfully.'
-					$scope.alerts.push(alert);
+					alert.msg='Stock edited successfully!'
+					stockService.setAlerts(alert);
 				}
 			});
 		}	
-          return;
-        })
-        .error(function() {
-        	//Error: do nothing.	
-          return console.log('error');
-        });			
+          return;			
 	};
     
-  });
+  }]);
